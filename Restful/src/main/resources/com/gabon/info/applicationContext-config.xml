@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       					   http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-3.1.xsd
+       					   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       					   http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+       					   http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/util/spring-mvc-3.1.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+                           http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.1.xsd">
+	   
+    <import resource="classpath:com/gabon/info/checkstyle.xml" />
+    
+	<bean id="classPathResource" class="org.springframework.core.io.ClassPathResource" lazy-init="default" autowire="default">
+	    <constructor-arg index="0" value="classpath:com/gabon/info/pmd.xml" />
+	</bean>
+	
+	<bean id="propertiesFactoryBean" class="org.springframework.beans.factory.config.PropertiesFactoryBean" lazy-init="default" autowire="default">
+        <property name="properties">
+	        	<props>
+		            	<prop key="hibernate.properties">classpath:com/gabon/info/hibernate.properties</prop>
+	           </props>
+        </property>
+    </bean>
+    
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="default" autowire="default">
+		<property name="fileEncoding" value="ISO-8859-1" />
+		<property name="properties" ref="propertiesFactoryBean" />
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+		<property name="location" value="classpath:com/gabon/info/log4j.properties" />
+		<property name="locations">
+			<set>
+				<value>classpath:com/gabon/info/buildNumber.properties</value>
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:uqam" />
+		<property name="username" value="uqam" />
+		<property name="password" value="uqam" />
+	</bean>
+	
+	<!-- 
+	<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">org.apache.naming.java.javaURLContextFactory</prop>
+				<prop key="java.naming.provider.url">org.apache.naming</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="jndiObjectFactoryBean" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="jndiTemplate" ref="jndiTemplate" />
+	    <property name="jndiName" value="jdbc/uqam" />
+	    <property name="jndiName" value="java:comp/env/jdbc/uqam" />
+	    <property name=“resourceRef” value=“true”/>
+	</bean>
+	-->
+	
+	<context:annotation-config />
+	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean class="org.springframework.dao.support.ChainedPersistenceExceptionTranslator"/> 
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />    
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.jdbc.support.lob.DefaultLobHandler" />
+    
+    <bean id="loadTimeWeaver" class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+	
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+	
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+	    <property name="databasePlatform" value="org.hibernate.dialect.Oracle10gDialect"/>
+	    <property name="generateDdl" value="false"/>
+	    <property name="showSql" value="true"/>
+	</bean>
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	    <property name="loadTimeWeaver" ref="loadTimeWeaver" />
+	    <property name="jpaDialect" ref="jpaDialect" />
+	    <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaProperties">
+	        <props>
+    			<prop key="hibernate.show_sql">true</prop>
+    			<prop key="hibernate.format_sql">true</prop>            
+    			<prop key="hibernate.hbm2ddl.auto">update</prop>
+    			<prop key="hibernate.use_outer_join">false</prop>
+			</props>
+	   </property>
+	</bean>
+	
+	<bean id="jpaTemplate" class="org.springframework.orm.jpa.JpaTemplate">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:com/gabon/info/hibernate.cfg.xml" />
+		<property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+		<property name="hibernateProperties">
+			<props>
+			    <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.use_outer_join">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>            
+    			<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+            <list>
+                <value>com.gabon.info.model.department.Department</value>
+                <value>com.gabon.info.model.office.Office</value>
+                <value>com.gabon.info.model.projects.Projects</value>
+                <value>com.gabon.info.model.roles.Roles</value>
+                <value>com.gabon.info.model.users.Users</value>
+            </list>
+        </property>	
+	</bean>
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="allowCreate" value="true" />
+	</bean>
+	
+	<bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    	<property name="sessionFactory" ref="sessionFactory" />
+  	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	   <property name="dataSource" ref="dataSource" />
+	</bean>
+
+	
+	
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="propagationBehaviorName" value="PROPAGATION_NEVER" />
+		<property name="timeout" value="30" />
+		<property name="transactionManager" ref="dataSourceTransactionManager" />
+	</bean>
+	
+	<bean id="transactionProxy" abstract="true" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="jpaTransactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED, readOnly</prop>
+			</props>
+		</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="jpaTransactionManager" proxy-target-class="false" />
+  	
+	<tx:advice id="txAdviceUserDao" transaction-manager="jpaTransactionManager">
+		<tx:attributes>
+			<tx:method name="display*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="read*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="set*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="*" isolation="DEFAULT" timeout="10" propagation="REQUIRES_NEW" read-only="false" rollback-for="org.springframework.dao.DataAccessException" />
+		</tx:attributes>
+	</tx:advice>
+	
+	
+	<bean id="abstractModel" class="com.gabon.info.model.AbstractModel" abstract="true" />
+	<bean id="users" class="com.gabon.info.model.users.Users" />
+	<bean id="abstractUsers" class="com.gabon.info.model.users.AbstractUsers" abstract="true" />
+	<bean id="roles" class="com.gabon.info.model.roles.Roles" />
+	<bean id="abstractRoles" class="com.gabon.info.model.roles.AbstractRoles" abstract="true" />
+	<bean id="projects" class="com.gabon.info.model.projects.Projects" />
+	<bean id="abstractProjects" class="com.gabon.info.model.projects.AbstractProjects" abstract="true" />
+	<bean id="office" class="com.gabon.info.model.office.Office" />
+	<bean id="abstractOffice" class="com.gabon.info.model.office.AbstractOffice" abstract="true" />
+	<bean id="department" class="com.gabon.info.model.department.Department" />
+	<bean id="abstractDepartment" class="com.gabon.info.model.department.AbstractDepartment" abstract="true" />	
+	
+	
+	<bean id="abstractDTO" class="com.gabon.info.dto.AbstractDTO" abstract="true" />
+	<bean id="usersDTO" class="com.gabon.info.dto.users.UsersDTO" />
+	<bean id="abstractUsersDTO" class="com.gabon.info.dto.users.AbstractUsersDTO" abstract="true" />
+	<bean id="rolesDTO" class="com.gabon.info.dto.roles.RolesDTO" />
+	<bean id="abstractRolesDTO" class="com.gabon.info.dto.roles.AbstractRolesDTO" abstract="true" />
+	<bean id="projectsDTO" class="com.gabon.info.dto.projects.ProjectsDTO" />
+	<bean id="abstractProjectsDTO" class="com.gabon.info.dto.projects.AbstractProjectsDTO" abstract="true" />
+	<bean id="officeDTO" class="com.gabon.info.dto.office.OfficeDTO" />
+	<bean id="abstractOfficeDTO" class="com.gabon.info.dto.office.AbstractOfficeDTO" abstract="true" />
+	<bean id="departmentDTO" class="com.gabon.info.dto.department.DepartmentDTO" />
+	<bean id="abstractDepartmentDTO" class="com.gabon.info.dto.department.AbstractDepartmentDTO" abstract="true" />	
+	
+	<bean id="builderFactory" class="org.dynadto.spring.LocalBuilderFactoryBean">
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>com/gabon/info</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="abstractService" class="com.gabon.info.service.AbstractService" abstract="true">
+		<property name="builderFactory" ref="builderFactory" />
+	</bean>
+	<bean id="usersService" class="com.gabon.info.service.users.UsersService" init-method="initialization" />
+	<bean id="rolesService" class="com.gabon.info.service.roles.RolesService" init-method="initialization" />
+	<bean id="projectsService" class="com.gabon.info.service.projects.ProjectsService" init-method="initialization" />
+	<bean id="officeService" class="com.gabon.info.service.office.OfficeService" init-method="initialization" />
+	<bean id="departmentService" class="com.gabon.info.service.department.DepartmentService" init-method="initialization" />
+	
+	
+	<bean id="abstractJpaDaoSupport" class="com.gabon.info.dao.spring.jpa.AbstractJpaDaoSupport" abstract="true" />
+	<!-- 
+	<bean id="concreteDAOJpaSpring" class="com.gabon.info.dao.spring.jpa.ConcreteDAOJpaSpring" />
+	<bean id="usersDAOJpaSpring" class="com.gabon.info.dao.spring.jpa.users.UsersDAO" />
+	<bean id="rolesDAOJpaSpring" class="com.gabon.info.dao.spring.jpa.roles.RolesDAO" />
+	<bean id="projectsDAOJpaSpring" class="com.gabon.info.dao.spring.jpa.projects.ProjectsDAO" />
+	<bean id="officeDAOJpaSpring" class="com.gabon.info.dao.spring.jpa.office.OfficeDAO" />
+	<bean id="departmentDAOJpaSpring" class="com.gabon.info.dao.spring.jpa.department.DepartmentDAO" />
+	-->
+	
+	
+	<bean id="abstractHibernateDaoSupport" class="com.gabon.info.dao.spring.hibernate.AbstractHibernateDaoSupport" abstract="true" />
+	<!-- 
+	<bean id="concreteDAOHibernateSpring" class="com.gabon.info.dao.spring.hibernate.ConcreteDAOJpaSpring" />
+	<bean id="usersDAOHibernateSpring" class="com.gabon.info.dao.spring.hibernate.users.UsersDAO" />
+	<bean id="rolesDAOHibernateSpring" class="com.gabon.info.dao.spring.hibernate.roles.RolesDAO" />
+	<bean id="projectsDAOHibernateSpring" class="com.gabon.info.dao.spring.hibernate.projects.ProjectsDAO" />
+	<bean id="officeDAOHibernateSpring" class="com.gabon.info.dao.spring.hibernate.office.OfficeDAO" />
+	<bean id="departmentDAOHibernateSpring" class="com.gabon.info.dao.spring.hibernate.department.DepartmentDAO" />
+	-->
+	
+	
+	<bean id="abstractJdbcDaoSupport" class="com.gabon.info.dao.spring.jdbc.AbstractJdbcDaoSupport" abstract="true" />
+	<!-- 
+	<bean id="concreteDAOJdbcSpring" class="com.gabon.info.dao.spring.jdbc.ConcreteDAOJpaSpring" />
+	<bean id="usersDAOJdbcSpring" class="com.gabon.info.dao.spring.jdbc.users.UsersDAO" />
+	<bean id="rolesDAOJdbcSpring" class="com.gabon.info.dao.spring.jdbc.roles.RolesDAO" />
+	<bean id="projectsDAOJdbcSpring" class="com.gabon.info.dao.spring.jdbc.projects.ProjectsDAO" />
+	<bean id="officeDAOJdbcSpring" class="com.gabon.info.dao.spring.jdbc.office.OfficeDAO" />
+	<bean id="departmentDAOJdbcSpring" class="com.gabon.info.dao.spring.jdbc.department.DepartmentDAO" />
+	-->
+	
+	
+	<bean id="abstractResource" class="com.gabon.info.resource.AbstractResource" abstract="true" />
+	<bean id="usersResource" class="com.gabon.info.resource.users.UsersResource" />
+	<bean id="rolesResource" class="com.gabon.info.resource.roles.RolesResource" />
+	<bean id="projectsResource" class="com.gabon.info.resource.projects.ProjectsResource" />
+	<bean id="officeResource" class="com.gabon.info.resource.office.OfficeResource" />
+	<bean id="departmentResource" class="com.gabon.info.resource.department.DepartmentResource" />
+	
+
+	<bean id="createdResponse" class="com.gabon.info.response.CreatedResponse" />
+	<bean id="messagesResponse" class="com.gabon.info.response.MessagesResponse" />
+	
+	
+	<bean id="genericException" class="com.gabon.info.exception.GenericException" />
+	<bean id="notSaveException" class="com.gabon.info.exception.NotSaveException" />
+	<bean id="notUpdateException" class="com.gabon.info.exception.NotUpdateException" />
+	<bean id="notDeleteException" class="com.gabon.info.exception.NotDeleteException" />
+	<bean id="webServiceError" class="com.gabon.info.exception.WebServiceError" />
+	<bean id="webServiceException" class="com.gabon.info.exception.WebServiceException" />
+	
+</beans>

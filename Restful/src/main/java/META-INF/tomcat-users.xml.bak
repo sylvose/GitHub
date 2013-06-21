@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE component PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "tomcat-users.dtd">
+
+<tomcat-users>
+
+  <role rolename="admin-gui"/>
+  <role rolename="manager-status"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-gui"/>
+  
+  <group groupname="manager-roles" description="A security domain for the application in tomcat" roles="admin-gui,manager-gui,manager-script,manager-jmx,manager-status"/>
+  <user username="administrator" password="adm1n1strat0r" fullName="A user for the application in tomcat" groups="manager-roles"/>
+
+</tomcat-users>

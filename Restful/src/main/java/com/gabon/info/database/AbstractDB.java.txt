@@ -1,0 +1,402 @@
+package com.gabon.info.database;
+
+
+/*
+ * This class is a abstract dto class.
+ * 
+ * @author <a href="mailto:asylvose@yahoo.fr">Sylvose ALLOGO</a>
+ *  
+ * Copyright (C) 2013 Sylvose ALLOGO
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * Tous droits reserves. 
+ *    
+ * Confidentiel
+ * 
+ * AbstractDTO entity provides the methods for the base persistence definition of the DTOs
+ */
+
+public abstract class AbstractDB {
+		
+	
+}
+
+
+
+
+
+import java.sql.*;
+//Factory class
+class ConnectionFactory{
+public ConnectionFactory() {}
+//Factory method to return a Connection object
+public Connection connect()throws Exception{
+//Load a driver
+String driver = "oracle.jdbc.driver.OracleDriver";
+Class.forName(driver).newInstance();
+
+
+//Set connection parameters
+System.out.println("Connecting to database...");
+String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:ORCL";
+String user = "toddt";
+String pwd = "mypwd";
+//Create a Connection object
+Connection conn = DriverManager.getConnection(jdbcUrl,user,pwd);
+System.out.println("Connection successful...");
+//Return Connection object
+return conn;
+}
+}//end ConnectionFactory
+
+
+
+
+
+
+//Class to demonstrate use of Factory Method
+public class BasicFactory{
+public static ConnectionFactory cf = null;
+public static Connection conn = null;
+public static void main(String[] args) {
+try{
+//Instantiate a ConnectionFactory object
+cf = new ConnectionFactory();
+//Obtain a connection to the database
+conn = cf.connect();
+//Populate a result set and show the results
+Statement stmt = conn.createStatement();
+ResultSet rs = stmt.executeQuery("SELECT * FROM Employees");
+//Iterate through the result set
+while(rs.next()){
+//Retrieve column values and display values
+int ssn= rs.getInt("ssn");
+String name = rs.getString("name");
+double salary = rs.getDouble("salary");
+System.out.print("Row Number=" + rs.getRow());
+System.out.print(", SSN: " + ssn);
+System.out.print(", Name: " + name);
+System.out.println(", Salary: $" + salary);
+}
+//Standard error handling.
+}catch(SQLException se){
+se.printStackTrace();
+
+}catch (Exception e){
+e.printStackTrace();
+
+//Ensure all database resources are closed.
+}finally{
+try{
+if (conn!=null)
+conn.close();
+}catch(SQLException se){
+se.printStackTrace();
+}
+}//end try
+System.out.println("Goodbye!");
+}
+}//end BasicFactory class
+
+
+
+
+import java.sql.*;
+//Abstract class that defines interface for factory objects
+abstract class AbstractConnFactory {
+//Protected variables that hold database specific information
+protected static Connection conn;
+protected String dbType = null;
+protected String user = null;
+protected String password = null;
+protected String driver = null;
+protected String jdbcUrl = null;
+protected String database = null;
+//Close the database connection
+public void close() throws SQLException {
+//Check if conn is null, if not close it and set to null
+if (conn!=null){
+System.out.println("Closing connection");
+System.out.println();
+conn.close();
+conn = null;
+}
+}
+//Access method to return a reference to a Connection object
+public Connection connect() throws Exception{
+if(conn!=null){
+System.out.println("Connection exists. Returning instance...");
+}else{
+System.out.println("Connection not created.
+Opening connection phase...");
+openConnection();
+}//end if
+return conn;
+}
+//Private method to create connection.
+private void openConnection() throws Exception{
+//Register a driver
+Class.forName(driver).newInstance();
+//Obtain a Connection object
+System.out.println("Connecting to " + dbType + " database...");
+conn = DriverManager.getConnection(jdbcUrl, user, password);
+System.out.println("Connection successful..");
+}
+}//end AbstractConnFactory
+
+
+
+
+
+//Subclass of the AbstractConnFactory for connecting
+to an ODBC database.
+class OdbcConnFactory extends AbstractConnFactory{
+//Private variables
+private static OdbcConnFactory ocf= null;
+//Private constructor
+private OdbcConnFactory() {
+jdbcUrl ="jdbc:odbc:";
+driver = "sun.jdbc.odbc.JdbcOdbcDriver";
+}
+//Public method used to get the only instance of OdbcConnFactory.
+public static synchronized AbstractConnFactory getInstance(){
+//If not initialized, do it here. Otherwise return existing object.
+if(ocf==null)
+ocf = new OdbcConnFactory();
+return ocf;
+}
+//Overridden method to open a database connection
+public Connection connect() throws Exception{
+
+//Configure the JDBC URL
+jdbcUrl = jdbcUrl + database;
+//Call the base class method to provide the connection
+return super.connect();
+}
+
+}//end OdbcConnFactory
+
+
+
+
+
+
+//Subclass of the AbstractConnFactory for connecting
+to an Oracle database.
+class OracleConnFactory extends AbstractConnFactory{
+//Private variables
+private static OracleConnFactory ocf= null;
+//Private constructor
+private OracleConnFactory() {
+jdbcUrl = "jdbc:oracle:thin:@localhost:1521:";
+driver = "oracle.jdbc.driver.OracleDriver";
+}
+//Public method used to get the only instance of OracleConnFactory.
+public static synchronized AbstractConnFactory getInstance(){
+//If not initialized, do it here. Otherwise just return
+existing object.
+if(ocf==null)
+ocf = new OracleConnFactory();
+return ocf;
+}
+//Overridden method to open a database connection
+public Connection connect() throws Exception{
+//Configure the JDBC URL
+jdbcUrl = jdbcUrl + database;
+//Call the base class method to provide the connection
+return super.connect();
+}
+}//end OracleFactory
+
+
+
+
+
+//Class to demonstrate the enhanced Factory Method
+public class EnhancedFactory {
+//Only reference to ConnectionManager
+static public ConnectionManager cm = null;
+//Main method
+public static void main(String[] args){
+try{
+
+//Retrieve the only instance of ConnectionManager
+cm = cm.getInstance();
+//Create and close a connection to the Oracle database to
+//demonstrate that it works.
+Connection conn = cm.connect(cm.ORACLE, "toddt", "mypwd", "ORCL");
+cm.close();
+//Open a connection to an Access database using ODBC
+conn = cm.connect(cm.ODBC, null, null, "employees");
+cm.close();
+//Catch all the relevant errors
+}catch(ConnectionManagerException cme){
+cme.printStackTrace();
+}catch(SQLException se){
+se.printStackTrace();
+}catch(Exception e){
+e.printStackTrace();
+//Use finally block to ensure database resources are closed
+}finally{
+if(cm!=null)
+try{
+cm.close();
+}catch(SQLException se){
+se.printStackTrace();
+}
+}
+}//end main()
+}//end EnhancedFactory
+
+
+
+
+
+
+//Class that manages database connections
+class ConnectionManager {
+//Constants to represent database types
+public static final int ORACLE = 100;
+public static final int ODBC = 200;
+//Variables to hold only instance of ConnectionManager class
+private static ConnectionManager connMgr = null;
+//Holds reference to the specific connection factory
+private static AbstractConnFactory acf =null;;
+//Private constructor
+private ConnectionManager() {}
+//Method that provides connection logic
+public Connection connect (int dbType, String user,
+String password, String db) throws Exception{
+//Examine the dbType parameter and assign the appropriate
+//factory to the
+//acf, which is the base class type.
+switch(dbType){
+//Specific factories are Singletons so get the only
+
+//instance and set the appropriate connection values.
+case ORACLE:
+acf = OracleConnFactory.getInstance();
+acf.dbType = "Oracle";
+break;
+case ODBC:
+acf = OdbcConnFactory.getInstance();
+acf.dbType="ODBC";
+break;
+//Error handling for unsupported database types.
+default:
+throw new SQLException("Type not supported");
+}//end switch
+acf.database=db;
+acf.user=user;
+acf.password=password;
+//Connect to the database and return reference.
+Connection conn = acf.connect();
+return conn;
+}
+//Close the database connection.
+public void close() throws SQLException{
+acf.close();
+}
+//Public method used to get the only instance of ConnectionManager.
+public static synchronized ConnectionManager getInstance(){
+if(connMgr==null)
+connMgr = new ConnectionManager();
+return connMgr;
+}
+}//end ConnectionManager
+
+
+
+
+
+
+
+
+import java.sql.*;
+import javax.sql.DataSource;
+import oracle.jdbc.pool.OracleDataSource;
+import javax.naming.Context;
+import javax.naming.NamingException;
+import javax.naming.InitialContext;
+import java.util.Hashtable;
+public class JndiDataSource{
+
+
+
+
+static Connection conn = null;
+static Statement stmt = null;
+static ResultSet rs = null;
+static Context ctx = null;
+static DataSource ds = null;
+public static void main (String args []){
+//Initialize the Context
+String sp = "com.sun.jndi.fscontext.RefFSContextFactory";
+String file = "file:/e:/JNDI";
+String dataSourceName = "jdbc/myDatabase";
+try {
+//Create Hashtable to hold environment properties
+//then open InitialContext
+Hashtable env = new Hashtable();
+env.put (Context.INITIAL_CONTEXT_FACTORY, sp);
+env.put (Context.PROVIDER_URL, file);
+ctx = new InitialContext(env);
+//Bind the DataSource object
+bindDataSource(ctx, dataSourceName);
+//Retrieve the DataSource object
+DataSource ds = null;
+ds = (DataSource) ctx.lookup(dataSourceName);
+//Open a connection, submit query, and print results
+Connection conn = ds.getConnection();
+Statement stmt = conn.createStatement();
+String sql = "SELECT Name FROM Employees";
+ResultSet rs = stmt.executeQuery(sql);
+System.out.println("Listing employee’s name:");
+while(rs.next())
+System.out.println(rs.getString("name"));
+//Close the connections to the data store resources
+ctx.close();
+rs.close();
+stmt.close();
+conn.close();
+}catch (NamingException ne){
+ne.printStackTrace();
+}catch (SQLException se){
+se.printStackTrace();
+//ensure all resources are closed
+}finally{
+try{
+if(ctx!=null)
+ctx.close();
+}catch (NamingException ne){
+ne.printStackTrace();
+}finally{
+try{
+
+if(conn!=null)
+conn.close();
+}catch (SQLException se){
+se.printStackTrace();
+}
+}
+}
+System.out.println("Goodbye!");
+}
+//Method to bind DataSource object
+public static void bindDataSource(Context ctx, String dsn)
+throws SQLException, NamingException{
+//Create an OracleDataSource instance
+OracleDataSource ods = new OracleDataSource();
+//Set the connection parameters
+ods.setUser("toddt");
+ods.setPassword("mypwd");
+ods.setDriverType("thin");
+ods.setDatabaseName("ORCL");
+ods.setServerName("localhost");
+ods.setPortNumber(1521);
+//Bind the DataSource
+ctx.rebind (dsn,ods);
+}
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<!-- une instance de SessionFactory accessible par son nom jndi
+	<session-factory name="java:comp/env/hibernate/SessionFactory">
+	-->
+	
+	<session-factory>
+
+		<!-- <property name="connection.datasource">jdbc/uqamDb</property> -->
+		
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:uqam</property>
+		<property name="hibernate.connection.username">uqam</property>
+		<property name="hibernate.connection.password">uqam</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>            
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.use_outer_join">false</property>
+
+		<!-- mapping class -->
+		<mapping class="com.gabon.info.model.users.Users" />
+		<mapping class="com.gabon.info.model.department.Department" />
+		<mapping class="com.gabon.info.model.office.Office" />
+		<mapping class="com.gabon.info.model.projects.Projects" />
+		<mapping class="com.gabon.info.model.roles.Roles" />
+
+	</session-factory>
+
+</hibernate-configuration>

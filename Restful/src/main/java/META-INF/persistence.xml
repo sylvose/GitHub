@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0" 
+    		 xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    		 xsi:schemaLocation=" http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+    	<persistence-unit name="restful" transaction-type="RESOURCE_LOCAL">
+    		
+    	    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    	    
+    		<!--
+    		<jta-data-source>jdbc/uqamDb</jta-data-source>
+    		<non-jta-data-source>jdbc/uqamDb</non-jta-data-source>
+    		-->
+    	
+    		<class>com.gabon.info.model.users.Users</class>
+    		
+    		<properties>
+    			<property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver" />
+    			<property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:1521:uqam" />
+    			<property name="hibernate.connection.username" value="uqam" />
+    			<property name="hibernate.connection.password" value="uqam" />
+    			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+    			<property name="hibernate.show_sql" value="true" />
+    			<property name="hibernate.format_sql" value="true" />            
+    			<property name="hibernate.hbm2ddl.auto" value="update" />
+    			<property name="hibernate.use_outer_join" value="false" />
+    		</properties>
+    		
+    	</persistence-unit>
+</persistence>
