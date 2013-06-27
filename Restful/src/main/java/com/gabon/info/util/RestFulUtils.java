@@ -1,8 +1,8 @@
 package com.gabon.info.util;
 
-import static com.gabon.info.util.RestFulConstants.NAME;
-import static com.gabon.info.util.RestFulConstants.URL_SERVER;
-import static com.gabon.info.util.RestFulConstants.URL_WEB_SERVICE_PROJECT_ON_THE_SERVER;
+import static com.gabon.info.util.Constants.NAME;
+import static com.gabon.info.util.Constants.URL_SERVER;
+import static com.gabon.info.util.Constants.URL_WEB_SERVICE_PROJECT_ON_THE_SERVER;
 
 import java.net.URI;
 import java.util.List;

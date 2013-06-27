@@ -886,7 +886,43 @@
           </execution>
         </executions>
       </plugin>
-    </plugins>
+      <plugin>
+		<groupId>eviware</groupId>
+		<artifactId>maven-soapui-plugin</artifactId>
+		<version>4.0.1</version>
+		<configuration>
+		    <!--
+		    <testSuite>XXXTest</testSuite>
+	   		<iface>YYYService</iface>
+	   		<tool>wsi</tool>
+	   		<settingsFile>${project.basedir}/src/main/resources/com/gabon/info/soapui-settings.xml</settingsFile>
+		    -->
+		    <exportAll>true</exportAll>
+        	<printReport>true</printReport>
+		    <junitReport>true</junitReport>
+		    <host>http://127.0.0.1:8080</host>
+		    <testFailIgnore>true</testFailIgnore>
+		    <outputFolder>${project.build.directory}/soapui</outputFolder>
+			<projectFile>${project.basedir}/src/main/resources/com/gabon/info/Restful-soapui-project.xml</projectFile>	
+		</configuration>
+		<executions>
+		    <execution>
+		        <id>generate-sources</id>
+	      		<phase>generate-sources</phase>
+	      		<goals>
+	        		<goal>generate</goal>
+	      		</goals>
+	    	</execution>
+			<execution>
+				<id>integration-testt</id>
+				<phase>integration-test</phase>
+				<goals>
+					<goal>test</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
+   </plugins>
   </build>
  
   <dependencyManagement>

@@ -18,6 +18,7 @@ import com.gabon.info.model.roles.Roles;
  * Confidentiel
  * 
  */
+
 public class RolesDAO extends ConcreteDAOJpa<Roles> implements RolesDAOFacade<Roles> {
 
 	private static final long serialVersionUID = 8956121744437126767L;

@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.gabon.info.model.users.Users;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * This class is a abstract model class.
@@ -28,7 +28,7 @@ import com.gabon.info.util.RestFulConstants;
  * AbstractRole entity provides the base persistence definition of the Roles entity.
  */
 
-public interface RolesFacade extends RestFulConstants {
+public interface RolesFacade extends Constants {
 
 	
 	// Property accessors

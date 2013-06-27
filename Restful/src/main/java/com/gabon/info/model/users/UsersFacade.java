@@ -18,7 +18,7 @@ import com.gabon.info.model.department.Department;
 import com.gabon.info.model.office.Office;
 import com.gabon.info.model.projects.Projects;
 import com.gabon.info.model.roles.Roles;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 
 /*
@@ -38,7 +38,7 @@ import com.gabon.info.util.RestFulConstants;
  * AbstractUsers entity provides the base persistence definition of the Users
  */
 
-public interface UsersFacade extends RestFulConstants {
+public interface UsersFacade extends Constants {
 
 	// Property accessors
 	

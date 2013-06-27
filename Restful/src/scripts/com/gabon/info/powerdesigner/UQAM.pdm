@@ -2836,7 +2836,7 @@ Shadow=0</a:DisplayPreferences>
 <o:ReferenceSymbol Id="o8">
 <a:CreationDate>1372039876</a:CreationDate>
 <a:ModificationDate>1372039992</a:ModificationDate>
-<a:Rect>((-19355,-865), (6036,11023))</a:Rect>
+<a:Rect>((-19355,-866), (6074,11023))</a:Rect>
 <a:ListOfPoints>((-19355,430),(1049,430),(1049,11023))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -2857,7 +2857,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o12">
 <a:CreationDate>1372039876</a:CreationDate>
 <a:ModificationDate>1372040003</a:ModificationDate>
-<a:Rect>((-5593,11023), (7606,21928))</a:Rect>
+<a:Rect>((-5631,11023), (7643,21928))</a:Rect>
 <a:ListOfPoints>((1049,11023),(1049,17661),(964,17661),(964,21928))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -2899,7 +2899,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o18">
 <a:CreationDate>1372039876</a:CreationDate>
 <a:ModificationDate>1372040019</a:ModificationDate>
-<a:Rect>((748,-7353), (26526,4978))</a:Rect>
+<a:Rect>((748,-7304), (26564,4978))</a:Rect>
 <a:ListOfPoints>((18764,4978),(18764,-6717),(748,-6717))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -2920,7 +2920,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o22">
 <a:CreationDate>1372039876</a:CreationDate>
 <a:ModificationDate>1372040019</a:ModificationDate>
-<a:Rect>((1049,4978), (25776,11660))</a:Rect>
+<a:Rect>((1049,4978), (25814,11610))</a:Rect>
 <a:ListOfPoints>((18764,4978),(18764,11023),(1049,11023))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -3927,7 +3927,7 @@ monitoring
 <a:Creator>Sylvose ALLOGO</a:Creator>
 <a:ModificationDate>1372040244</a:ModificationDate>
 <a:Modifier>Sylvose ALLOGO</a:Modifier>
-<a:TargetModelURL>file:///D|/GitHub/Restful/src/scripts/com/gabon/info/UQAM/UQAM.cdm</a:TargetModelURL>
+<a:TargetModelURL>file:///D|/GitHub/Restful/src/scripts/com/gabon/info/powerdesigner/UQAM.cdm</a:TargetModelURL>
 <a:TargetModelID>487969CC-C691-4B3F-9C04-9E3D7C64363E</a:TargetModelID>
 <a:TargetModelClassID>1E597170-9350-11D1-AB3C-0020AF71E433</a:TargetModelClassID>
 <c:SessionShortcuts>
@@ -3942,7 +3942,7 @@ monitoring
 <a:Creator>Sylvose ALLOGO</a:Creator>
 <a:ModificationDate>1372040508</a:ModificationDate>
 <a:Modifier>Sylvose ALLOGO</a:Modifier>
-<a:TargetModelURL>file:///D|/GitHub/Restful/src/scripts/com/gabon/info/UQAM/UQAM.ldm</a:TargetModelURL>
+<a:TargetModelURL>file:///D|/GitHub/Restful/src/scripts/com/gabon/info/powerdesigner/UQAM.ldm</a:TargetModelURL>
 <a:TargetModelID>CE83819B-8DB6-44E2-AF0D-8E904AC0A0FE</a:TargetModelID>
 <a:TargetModelClassID>5F45F978-C4F3-4E35-A3FC-AF3318663A0F</a:TargetModelClassID>
 <c:SessionShortcuts>
@@ -3957,7 +3957,7 @@ monitoring
 <a:Creator>Sylvose ALLOGO</a:Creator>
 <a:ModificationDate>1372040629</a:ModificationDate>
 <a:Modifier>Sylvose ALLOGO</a:Modifier>
-<a:TargetModelURL>file:///D|/GitHub/Restful/src/scripts/com/gabon/info/UQAM/UQAM.xsm</a:TargetModelURL>
+<a:TargetModelURL>file:///D|/GitHub/Restful/src/scripts/com/gabon/info/powerdesigner/UQAM.xsm</a:TargetModelURL>
 <a:TargetModelID>A81728FA-8921-460E-AE04-B67DB46BB987</a:TargetModelID>
 <a:TargetModelClassID>029EAF0C-06EE-4282-8CB2-D70732085DEF</a:TargetModelClassID>
 <c:SessionShortcuts>

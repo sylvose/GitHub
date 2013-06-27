@@ -1,9 +1,9 @@
 package com.gabon.info.model.department;
 
-import static com.gabon.info.util.RestFulConstants.AbstractDepartment;
-import static com.gabon.info.util.RestFulConstants.DEPARTMENT;
-import static com.gabon.info.util.RestFulConstants.ID;
-import static com.gabon.info.util.RestFulConstants.USERS;
+import static com.gabon.info.util.Constants.AbstractDepartment;
+import static com.gabon.info.util.Constants.DEPARTMENT;
+import static com.gabon.info.util.Constants.ID;
+import static com.gabon.info.util.Constants.USERS;
 
 import java.util.HashSet;
 import java.util.Set;

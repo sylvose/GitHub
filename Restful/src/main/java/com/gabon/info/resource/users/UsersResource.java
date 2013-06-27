@@ -1,6 +1,6 @@
 package com.gabon.info.resource.users;
 
-import static com.gabon.info.util.RestFulConstants.URI_PATH_USERS;
+import static com.gabon.info.util.Constants.URI_PATH_USERS;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;

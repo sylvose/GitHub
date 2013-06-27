@@ -3,7 +3,7 @@ package com.gabon.info.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * This class is a abstract model class.
@@ -22,7 +22,7 @@ import com.gabon.info.util.RestFulConstants;
  * Model entity provides the methods for the base persistence definition of the Models
  */
 
-public interface Model extends RestFulConstants, Serializable {
+public interface Model extends Constants, Serializable {
 
 	Date getLastModified();
 

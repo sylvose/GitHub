@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gabon.info.dao.DAOSupportFacade;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 
 /*
@@ -29,7 +29,7 @@ import com.gabon.info.util.RestFulConstants;
  * 
  */
 
-public interface ServiceFacade<T, E, PK extends Serializable> extends RestFulConstants, Serializable {
+public interface ServiceFacade<T, E, PK extends Serializable> extends Constants, Serializable {
 
 	PK getProperty(E entity, String property);
 	

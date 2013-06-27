@@ -1,6 +1,6 @@
 package com.gabon.info.dao.spring.jpa.office;
 
-import static com.gabon.info.util.RestFulConstants.BEAN_OFFICE_DAO_JPA_SPRING;
+import static com.gabon.info.util.Constants.BEAN_OFFICE_DAO_JPA_SPRING;
 
 import java.util.List;
 

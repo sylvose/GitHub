@@ -1,6 +1,6 @@
 package com.gabon.info.dao.spring.jpa;
 
-import static com.gabon.info.util.RestFulConstants.BEAN_CONCRETE_DAO_JPA_SPRING;
+import static com.gabon.info.util.Constants.BEAN_CONCRETE_DAO_JPA_SPRING;
 
 import java.io.Serializable;
 

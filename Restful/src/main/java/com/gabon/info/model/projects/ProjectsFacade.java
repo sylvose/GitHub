@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import com.gabon.info.model.users.Users;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * This class is a abstract model class.
@@ -29,7 +29,7 @@ import com.gabon.info.util.RestFulConstants;
  * AbstractProject entity provides the base persistence definition of the Project entity.
  */
 
-public interface ProjectsFacade extends RestFulConstants {
+public interface ProjectsFacade extends Constants {
 
 	
 	// Property accessors

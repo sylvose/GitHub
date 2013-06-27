@@ -1,15 +1,15 @@
 package com.gabon.info.model.users;
 
-import static com.gabon.info.util.RestFulConstants.BEAN_USERS;
-import static com.gabon.info.util.RestFulConstants.EMAIL;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_USERS_NAME;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_USERS_QUERY;
-import static com.gabon.info.util.RestFulConstants.NAME;
-import static com.gabon.info.util.RestFulConstants.T_USERS;
-import static com.gabon.info.util.RestFulConstants.UQAM;
-import static com.gabon.info.util.RestFulConstants.USERS_SEQ;
-import static com.gabon.info.util.RestFulConstants.USERS_SEQ_GEN;
-import static com.gabon.info.util.RestFulConstants.Users;
+import static com.gabon.info.util.Constants.BEAN_USERS;
+import static com.gabon.info.util.Constants.EMAIL;
+import static com.gabon.info.util.Constants.GET_ALL_USERS_NAME;
+import static com.gabon.info.util.Constants.GET_ALL_USERS_QUERY;
+import static com.gabon.info.util.Constants.NAME;
+import static com.gabon.info.util.Constants.T_USERS;
+import static com.gabon.info.util.Constants.UQAM;
+import static com.gabon.info.util.Constants.USERS_SEQ;
+import static com.gabon.info.util.Constants.USERS_SEQ_GEN;
+import static com.gabon.info.util.Constants.Users;
 
 import java.util.Set;
 

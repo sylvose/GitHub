@@ -2,14 +2,14 @@ package com.gabon.info.response;
 
 import java.util.Arrays;
 
-import static com.gabon.info.util.RestFulConstants.MISSING_QP;
-import static com.gabon.info.util.RestFulConstants.ID_NOT_FOUND;
-import static com.gabon.info.util.RestFulConstants.RESOURCE_NOT_FOUND;
-import static com.gabon.info.util.RestFulConstants.INVALID_DATA;
-import static com.gabon.info.util.RestFulConstants.ERROR_SAVING;
-import static com.gabon.info.util.RestFulConstants.ERROR_DELETING;
-import static com.gabon.info.util.RestFulConstants.ERROR_DESACTIVATING;
-import static com.gabon.info.util.RestFulConstants.INVALID_VALUE;
+import static com.gabon.info.util.Constants.MISSING_QP;
+import static com.gabon.info.util.Constants.ID_NOT_FOUND;
+import static com.gabon.info.util.Constants.RESOURCE_NOT_FOUND;
+import static com.gabon.info.util.Constants.INVALID_DATA;
+import static com.gabon.info.util.Constants.ERROR_SAVING;
+import static com.gabon.info.util.Constants.ERROR_DELETING;
+import static com.gabon.info.util.Constants.ERROR_DESACTIVATING;
+import static com.gabon.info.util.Constants.INVALID_VALUE;
 
 /*
  * @author <a href="mailto:asylvose@yahoo.fr">Sylvose ALLOGO</a>

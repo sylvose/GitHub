@@ -12,10 +12,10 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
- * This class is a domain class.
+ * This class is a Helper class.
  * 
  * @author <a href="mailto:asylvose@yahoo.fr">Sylvose ALLOGO</a>
  *  
@@ -30,7 +30,7 @@ import com.gabon.info.util.RestFulConstants;
  * 
  */
 
-public class JpaHelper implements RestFulConstants {
+public class JpaHelper implements Constants {
 
 	private static final long serialVersionUID = -2852956576423927755L;
 	

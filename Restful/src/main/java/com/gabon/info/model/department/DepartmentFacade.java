@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.gabon.info.model.users.Users;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 
 /*
@@ -30,7 +30,7 @@ import com.gabon.info.util.RestFulConstants;
  * AbstractDepartment entity provides the base persistence definition of the Department entity.
  */
 
-public interface DepartmentFacade extends RestFulConstants {
+public interface DepartmentFacade extends Constants {
 
 	
 	// Property accessors

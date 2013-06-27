@@ -986,7 +986,7 @@ Shadow=0
 <c:Symbols>
 <o:RelationshipSymbol Id="o5">
 <a:ModificationDate>1372040295</a:ModificationDate>
-<a:Rect>((1435,-2939), (27760,11222))</a:Rect>
+<a:Rect>((1435,-3039), (27760,11322))</a:Rect>
 <a:ListOfPoints>((27760,-1766),(15465,-1766),(15465,10048),(1435,10048))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>14135</a:ArrowStyle>
@@ -1006,7 +1006,7 @@ NAMA 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o9">
 <a:ModificationDate>1372040293</a:ModificationDate>
-<a:Rect>((-7540,-4445), (2510,10048))</a:Rect>
+<a:Rect>((-7502,-4445), (2472,10048))</a:Rect>
 <a:ListOfPoints>((1574,10048),(1574,2566),(-6605,2566),(-6605,-4445))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>55</a:ArrowStyle>
@@ -1026,7 +1026,7 @@ NAMA 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o12">
 <a:ModificationDate>1372040278</a:ModificationDate>
-<a:Rect>((-4506,10147), (8768,21028))</a:Rect>
+<a:Rect>((-4468,10147), (8731,21028))</a:Rect>
 <a:ListOfPoints>((2539,21028),(2539,17661),(1723,17661),(1723,10147))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>55</a:ArrowStyle>
@@ -1046,7 +1046,7 @@ NAMA 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o15">
 <a:ModificationDate>1372040300</a:ModificationDate>
-<a:Rect>((-18519,9222), (1574,11268))</a:Rect>
+<a:Rect>((-18519,9222), (1574,11368))</a:Rect>
 <a:ListOfPoints>((-18519,10022),(1574,10022))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>55</a:ArrowStyle>
@@ -1731,7 +1731,7 @@ DAT 1372040227</a:History>
 <a:Creator>Sylvose ALLOGO</a:Creator>
 <a:ModificationDate>1372040227</a:ModificationDate>
 <a:Modifier>Sylvose ALLOGO</a:Modifier>
-<a:TargetModelURL>file:///D|/GitHub/Restful/src/scripts/com/gabon/info/UQAM/UQAM.pdm</a:TargetModelURL>
+<a:TargetModelURL>file:///%[PRJ_ROOT_DIR]%/UQAM.pdm</a:TargetModelURL>
 <a:TargetModelID>AC06A823-4ACF-4740-A7B7-124562A76FFC</a:TargetModelID>
 <a:TargetModelClassID>CDE44E21-9669-11D1-9914-006097355D9B</a:TargetModelClassID>
 <c:SessionShortcuts>

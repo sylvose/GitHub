@@ -1,6 +1,6 @@
 package com.gabon.info.resource;
 
-import static com.gabon.info.util.RestFulConstants.URI_PATH_ABSTRACT_RESOURCES;
+import static com.gabon.info.util.Constants.URI_PATH_ABSTRACT_RESOURCES;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;

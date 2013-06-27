@@ -11,7 +11,7 @@
 --%>
 
 <%@ page isErrorPage="false" contentType="text/html" language="java" autoFlush="true" isThreadSafe="false" session="false" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.gabon.info.model.users.User,com.gabon.info.model.roles.Role,com.gabon.info.util.RestFulConstants,java.lang.String,java.util.Set,java.util.HashSet,java.util.Collections,java.util.Arrays" %>
+<%@ page import="com.gabon.info.model.users.User,com.gabon.info.model.roles.Role,com.gabon.info.util.Constants,java.lang.String,java.util.Set,java.util.HashSet,java.util.Collections,java.util.Arrays" %>
 
 		<%
 			final String path = request.getContextPath();
@@ -38,68 +38,68 @@
 		<h2>Jersey RESTful Web Service by Sylvose ALLOGO</h2>
 		
 		<%
-					final User user1 = RestFulConstants.FIRST_USER;
-							final User user2 = RestFulConstants.SECOND_USER;
-							
-							final String name3 = "EDOU";
-							final String email3 = "jacque@gmail.com";
-							final Set<Role> roles3 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("manager"), new Role("architect") })));
-							final User user3 = new User(name3, email3, roles3);
-							
-						    final String name4 = "George";
-							final String email4 = "guy@msn.com";
-							final Set<Role> roles4 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("analyst"), new Role("scrumaster") })));
-							final User user4 = new User(name4, email4, roles4);
-							
-							final String name5 = null;
-							final String email5 = "diane@yahoo.fr.com";
-							final Set<Role> roles5 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("driver"), new Role("tester") })));
-							final User user5 = new User(null, email5, roles5);
-							
-							final String name6 = "EDOU";
-							final String email6 = null;
-							final Set<Role> roles6 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("manager"), new Role("analyst") })));
-							final User user6 = new User(name6, email6, roles6);
-							
-							final String name7 = "George";
-							final String email7 = "george@cogeco.com";
-							final Set<Role> roles7 = null;
-							final User user7 = new User(name7, email7, roles7);
-							
-							final String name8 = null;
-							final String email8 = null;
-							final Set<Role> roles8 = null;
-							final User user8 = null;
-							
-							final String name9 = "ALLOGO";
-							final String email9 = "jacque@gmail.com";
-							final Set<Role> roles9 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("manager"), new Role("architect") })));
-							final User user9 = new User(name9, email9, roles9);
-							
-							final String name10 = "Sylvose";
-							final String email10 = "guy@msn.com";
-							final Set<Role> roles10 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("analyst"), new Role("scrumaster") })));
-							final User user10 = new User(name10, email10, roles10);
-							
-							final String name11 = null;
-							final String email11 = "diane@yahoo.fr.com";
-							final Set<Role> roles11 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("driver"), new Role("tester") })));
-							final User user11 = new User(null, email11, roles11);
-							
-							final String name12 = "ALLOGO";
-							final String email12 = null;
-							final Set<Role> roles12 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("manager"), new Role("analyst") })));
-							final User user12 = new User(name12, email12, roles12);
-							
-							final String name13 = "Sylvose";
-							final String email13 = "george@cogeco.com";
-							final Set<Role> roles13 = null;
-							final User user13 = new User(name13, email13, roles13);
-							
-							final String name14 = null;
-							final String email14 = null;
-							final Set<Role> roles14 = null;
-							final User user14 = null;
+					final User user1 = Constants.FIRST_USER;
+									final User user2 = Constants.SECOND_USER;
+									
+									final String name3 = "EDOU";
+									final String email3 = "jacque@gmail.com";
+									final Set<Role> roles3 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("manager"), new Role("architect") })));
+									final User user3 = new User(name3, email3, roles3);
+									
+								    final String name4 = "George";
+									final String email4 = "guy@msn.com";
+									final Set<Role> roles4 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("analyst"), new Role("scrumaster") })));
+									final User user4 = new User(name4, email4, roles4);
+									
+									final String name5 = null;
+									final String email5 = "diane@yahoo.fr.com";
+									final Set<Role> roles5 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("driver"), new Role("tester") })));
+									final User user5 = new User(null, email5, roles5);
+									
+									final String name6 = "EDOU";
+									final String email6 = null;
+									final Set<Role> roles6 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("manager"), new Role("analyst") })));
+									final User user6 = new User(name6, email6, roles6);
+									
+									final String name7 = "George";
+									final String email7 = "george@cogeco.com";
+									final Set<Role> roles7 = null;
+									final User user7 = new User(name7, email7, roles7);
+									
+									final String name8 = null;
+									final String email8 = null;
+									final Set<Role> roles8 = null;
+									final User user8 = null;
+									
+									final String name9 = "ALLOGO";
+									final String email9 = "jacque@gmail.com";
+									final Set<Role> roles9 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("manager"), new Role("architect") })));
+									final User user9 = new User(name9, email9, roles9);
+									
+									final String name10 = "Sylvose";
+									final String email10 = "guy@msn.com";
+									final Set<Role> roles10 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("analyst"), new Role("scrumaster") })));
+									final User user10 = new User(name10, email10, roles10);
+									
+									final String name11 = null;
+									final String email11 = "diane@yahoo.fr.com";
+									final Set<Role> roles11 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("driver"), new Role("tester") })));
+									final User user11 = new User(null, email11, roles11);
+									
+									final String name12 = "ALLOGO";
+									final String email12 = null;
+									final Set<Role> roles12 = Collections.unmodifiableSet(new HashSet<Role>(Arrays.asList(new Role [] { new Role("manager"), new Role("analyst") })));
+									final User user12 = new User(name12, email12, roles12);
+									
+									final String name13 = "Sylvose";
+									final String email13 = "george@cogeco.com";
+									final Set<Role> roles13 = null;
+									final User user13 = new User(name13, email13, roles13);
+									
+									final String name14 = null;
+									final String email14 = null;
+									final Set<Role> roles14 = null;
+									final User user14 = null;
 				%>
 		<p>
 			WADL : Web Application Description Language<br />

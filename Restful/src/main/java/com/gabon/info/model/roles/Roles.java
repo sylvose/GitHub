@@ -1,13 +1,13 @@
 package com.gabon.info.model.roles;
 
-import static com.gabon.info.util.RestFulConstants.BEAN_ROLES;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_ROLES_NAME;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_ROLES_QUERY;
-import static com.gabon.info.util.RestFulConstants.ROLES_SEQ;
-import static com.gabon.info.util.RestFulConstants.ROLES_SEQ_GEN;
-import static com.gabon.info.util.RestFulConstants.Roles;
-import static com.gabon.info.util.RestFulConstants.T_ROLES;
-import static com.gabon.info.util.RestFulConstants.UQAM;
+import static com.gabon.info.util.Constants.BEAN_ROLES;
+import static com.gabon.info.util.Constants.GET_ALL_ROLES_NAME;
+import static com.gabon.info.util.Constants.GET_ALL_ROLES_QUERY;
+import static com.gabon.info.util.Constants.ROLES_SEQ;
+import static com.gabon.info.util.Constants.ROLES_SEQ_GEN;
+import static com.gabon.info.util.Constants.Roles;
+import static com.gabon.info.util.Constants.T_ROLES;
+import static com.gabon.info.util.Constants.UQAM;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;

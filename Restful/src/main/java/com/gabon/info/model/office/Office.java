@@ -1,13 +1,13 @@
 package com.gabon.info.model.office;
 
-import static com.gabon.info.util.RestFulConstants.BEAN_OFFICE;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_OFFICE_NAME;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_OFFICE_QUERY;
-import static com.gabon.info.util.RestFulConstants.OFFICE_SEQ;
-import static com.gabon.info.util.RestFulConstants.OFFICE_SEQ_GEN;
-import static com.gabon.info.util.RestFulConstants.Office;
-import static com.gabon.info.util.RestFulConstants.T_OFFICE;
-import static com.gabon.info.util.RestFulConstants.UQAM;
+import static com.gabon.info.util.Constants.BEAN_OFFICE;
+import static com.gabon.info.util.Constants.GET_ALL_OFFICE_NAME;
+import static com.gabon.info.util.Constants.GET_ALL_OFFICE_QUERY;
+import static com.gabon.info.util.Constants.OFFICE_SEQ;
+import static com.gabon.info.util.Constants.OFFICE_SEQ_GEN;
+import static com.gabon.info.util.Constants.Office;
+import static com.gabon.info.util.Constants.T_OFFICE;
+import static com.gabon.info.util.Constants.UQAM;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;

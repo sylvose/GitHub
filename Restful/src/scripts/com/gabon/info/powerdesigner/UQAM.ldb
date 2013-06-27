@@ -15,7 +15,17 @@
 <a:ModificationDate>1372040490</a:ModificationDate>
 <a:Modifier>Sylvose ALLOGO</a:Modifier>
 <a:History>ORG {AC06A823-4ACF-4740-A7B7-124562A76FFC}
-DAT 1372040490</a:History>
+DAT 1372040490
+ATT FOPT</a:History>
+<a:PackageOptionsText>[FolderOptions]
+
+[FolderOptions\Common]
+GenerationCheckModel=Yes
+GenerationPath=
+GenerationOptions=
+GenerationTasks=
+GenerationTargets=
+GenerationSelections=</a:PackageOptionsText>
 <a:ModelOptionsText>[ModelOptions]
 
 [ModelOptions\Logical options]

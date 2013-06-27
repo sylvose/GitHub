@@ -1,9 +1,9 @@
 package com.gabon.info.server;
 
-import static com.gabon.info.util.RestFulConstants.LOCALHOST;
-import static com.gabon.info.util.RestFulConstants.PORT;
-import static com.gabon.info.util.RestFulConstants.PROJECT;
-import static com.gabon.info.util.RestFulConstants.URI_PACKAGE;
+import static com.gabon.info.util.Constants.LOCALHOST;
+import static com.gabon.info.util.Constants.PORT;
+import static com.gabon.info.util.Constants.PROJECT;
+import static com.gabon.info.util.Constants.URI_PACKAGE;
 
 import java.io.IOException;
 import java.net.URI;

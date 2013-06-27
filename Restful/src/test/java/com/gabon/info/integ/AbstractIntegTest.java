@@ -1,7 +1,7 @@
 package com.gabon.info.integ;
 
-import static com.gabon.info.util.RestFulConstants.APPLICATION_CONTEXT_ROOT;
-import static com.gabon.info.util.RestFulConstants.BEAN_JPA_TRANSACTION_MANAGER;
+import static com.gabon.info.util.Constants.APPLICATION_CONTEXT_ROOT;
+import static com.gabon.info.util.Constants.BEAN_JPA_TRANSACTION_MANAGER;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -20,7 +20,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -50,7 +50,7 @@ import com.sun.jersey.test.framework.spi.container.http.HTTPContainerFactory;
 @RunWith(JUnit4.class)
 @ContextConfiguration(locations = { APPLICATION_CONTEXT_ROOT }) 
 @TransactionConfiguration(transactionManager = BEAN_JPA_TRANSACTION_MANAGER, defaultRollback = true)
-public abstract class AbstractIntegTest extends JerseyTest implements RestFulConstants {
+public abstract class AbstractIntegTest extends JerseyTest implements Constants {
 	
 	private static final long serialVersionUID = 7053071465704447515L;
 	

@@ -31,7 +31,7 @@ import com.gabon.info.model.users.Users;
  * 
  */
 
-public interface RestFulConstants extends Serializable {
+public interface Constants extends Serializable {
 	
 	int CONCRETE_DAO_JDBC = 1;
 	int CONCRETE_DAO_JDBC_SPRING = 2;
@@ -232,11 +232,11 @@ public interface RestFulConstants extends Serializable {
 
 	// Map<String, User> mapUsers = ImmutableMap.<String, User> builder().put(FIRST_NAME_ID, FIRST_USER).put(SECOND_NAME_ID, SECOND_USER).build();
 	
-	String ILLEGAL_ARGUMENT_SAVE = "Save : T instance is not saved yet, the T Model Or Id is null : ";
-	String ILLEGAL_ARGUMENT_UPDATE = "Update : T instance is not updated yet, the T Model Or Id is null : ";
-	String ILLEGAL_ARGUMENT_DELETE = "Delete : T instance is not deleted yet, the T Model Or Id is null : ";
-	String ILLEGAL_ARGUMENT_FIND = "Find : T instance is not deleted yet, the T Model Or Id is null : ";
-	String ILLEGAL_ARGUMENT_GET = "Get : T instance is not getted yet, the T Model Or Id is null : ";
+	String ILLEGAL_ARGUMENT_SAVE = "Save : E instance is not saved yet, the E Entity Or Id is null : ";
+	String ILLEGAL_ARGUMENT_UPDATE = "Update : E instance is not updated yet, the E Entity Or Id is null : ";
+	String ILLEGAL_ARGUMENT_DELETE = "Delete : E instance is not deleted yet, the E Entity Or Id is null : ";
+	String ILLEGAL_ARGUMENT_FIND = "Find : E instance is not deleted yet, the E Entity Or Id is null : ";
+	String ILLEGAL_ARGUMENT_GET = "Get : E instance is not getted yet, the E Entity Or Id is null : ";
 	
 	String SAVE_SUCCESSFUL = "save successful";
 	String UPDATE_SUCCESFUL = "update successful";

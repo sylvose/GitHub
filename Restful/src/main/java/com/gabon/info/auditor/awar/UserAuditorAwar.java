@@ -1,7 +1,7 @@
 package com.gabon.info.auditor.awar;
 
 import org.springframework.data.domain.AuditorAware;
-import static com.gabon.info.util.RestFulConstants.SYSTEM;
+import static com.gabon.info.util.Constants.SYSTEM;
 
 /*
  * This class UserResource return an instance of the User domain class.

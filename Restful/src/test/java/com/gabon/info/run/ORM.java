@@ -2,11 +2,7 @@ package com.gabon.info.run;
 
 import com.gabon.info.dao.AbstractDAOFactory;
 import com.gabon.info.dao.DAOFacade;
-import com.gabon.info.dao.hibernate.ConcreteDAOHibernate;
-import com.gabon.info.dao.jdbc.ConcreteDAOJdbc;
 import com.gabon.info.dao.jpa.ConcreteDAOJpa;
-import com.gabon.info.dao.spring.hibernate.ConcreteDAOHibernateSpring;
-import com.gabon.info.dao.spring.jdbc.ConcreteDAOJdbcSpring;
 import com.gabon.info.dao.spring.jpa.ConcreteDAOJpaSpring;
 import com.gabon.info.model.department.Department;
 import com.gabon.info.model.office.Office;
@@ -32,6 +28,7 @@ import com.gabon.info.model.users.Users;
  * added to each of these methods for data to be persisted to the JPA datastore.
  * 
  */
+
 public class ORM<T> implements AbstractDAOFactory<T> {	
 	
 	private static final long serialVersionUID = 1346557290296788523L;
@@ -74,30 +71,15 @@ public class ORM<T> implements AbstractDAOFactory<T> {
 	
 	
 	
-	
 	public static AbstractDAOFactory<Object> getAbstractDAOFactory(int frameWork) {
 		
 		switch (frameWork) {
 		
-				case CONCRETE_DAO_JDBC:
-					daoFactory = new ConcreteDAOJdbc<Object>();
-					break;
-				case CONCRETE_DAO_JDBC_SPRING:
-					daoFactory = new ConcreteDAOJdbcSpring<Object, Long>();
-					break;
-					
 				case CONCRETE_DAO_JPA:
 					daoFactory = new ConcreteDAOJpa<Object>();
 					break;
 				case CONCRETE_DAO_JPA_SPRING:
 					daoFactory = new ConcreteDAOJpaSpring<Object, Long>();
-					break;
-					
-				case CONCRETE_DAO_HIBERNATE:
-					daoFactory = new ConcreteDAOHibernate<Object>();
-					break;
-				case CONCRETE_DAO_HIBERNATE_SPRING:
-					daoFactory = new ConcreteDAOHibernateSpring<Object, Long>();
 					break;
 					
 				default: 

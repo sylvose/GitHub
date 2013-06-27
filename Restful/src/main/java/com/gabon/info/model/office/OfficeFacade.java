@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import com.gabon.info.model.users.Users;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * This class is a abstract model class.
@@ -27,7 +27,7 @@ import com.gabon.info.util.RestFulConstants;
  * AbstractOffice entity provides the base persistence definition of the Office entity.
  */
 
-public interface OfficeFacade extends RestFulConstants {
+public interface OfficeFacade extends Constants {
 
 
 	// Property accessors

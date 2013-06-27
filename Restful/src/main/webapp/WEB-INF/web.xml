@@ -9,7 +9,7 @@
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
     <init-param id="InitParam_1">
       <param-name>com.sun.jersey.config.property.packages</param-name>
-      <param-value>com.gabon.info</param-value>
+      <param-value>com.gabon.info.resource</param-value>
     </init-param>
     <init-param id="InitParam_2">
 		<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>

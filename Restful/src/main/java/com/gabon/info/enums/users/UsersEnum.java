@@ -1,11 +1,11 @@
 package com.gabon.info.enums.users;
 
-import static com.gabon.info.util.RestFulConstants.MESSAGE;
-import static com.gabon.info.util.RestFulConstants.NULL_ID;
-import static com.gabon.info.util.RestFulConstants.FIVE_NAME_ID;
-import static com.gabon.info.util.RestFulConstants.SIX_NAME_ID;
-import static com.gabon.info.util.RestFulConstants.FIVE_USERS;
-import static com.gabon.info.util.RestFulConstants.SIX_USERS;
+import static com.gabon.info.util.Constants.MESSAGE;
+import static com.gabon.info.util.Constants.NULL_ID;
+import static com.gabon.info.util.Constants.FIVE_NAME_ID;
+import static com.gabon.info.util.Constants.SIX_NAME_ID;
+import static com.gabon.info.util.Constants.FIVE_USERS;
+import static com.gabon.info.util.Constants.SIX_USERS;
 
 import java.util.Arrays;
 import java.util.Collections;

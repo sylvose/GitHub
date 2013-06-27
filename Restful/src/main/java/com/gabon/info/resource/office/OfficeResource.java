@@ -1,6 +1,6 @@
 package com.gabon.info.resource.office;
 
-import static com.gabon.info.util.RestFulConstants.URI_PATH_OFFICES;
+import static com.gabon.info.util.Constants.URI_PATH_OFFICES;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;

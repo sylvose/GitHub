@@ -20,7 +20,7 @@ import com.gabon.info.resource.roles.RolesResource;
 import com.gabon.info.resource.roles.RolesResourceFacade;
 import com.gabon.info.resource.users.UsersResource;
 import com.gabon.info.resource.users.UsersResourceFacade;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * @author <a href="mailto:asylvose@yahoo.fr">Sylvose ALLOGO</a>
@@ -36,7 +36,7 @@ import com.gabon.info.util.RestFulConstants;
  * 
  */
 
-public class Resource implements RestFulConstants {
+public class Resource implements Constants {
 
 	private static final long serialVersionUID = 7152176377366845848L;
 	

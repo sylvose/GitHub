@@ -7,7 +7,7 @@ import com.gabon.info.model.office.Office;
 import com.gabon.info.model.projects.Projects;
 import com.gabon.info.model.roles.Roles;
 import com.gabon.info.model.users.Users;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * @author <a href="mailto:asylvose@yahoo.fr">Sylvose ALLOGO</a>
@@ -29,7 +29,7 @@ import com.gabon.info.util.RestFulConstants;
  * to create the concrete objects that are part of the theme.
  * 
  */
-public interface AbstractDAOFactory<E> extends RestFulConstants, Serializable {
+public interface AbstractDAOFactory<E> extends Constants, Serializable {
 	
 	DAOFacade<Department> createDepartmentDAO();
 

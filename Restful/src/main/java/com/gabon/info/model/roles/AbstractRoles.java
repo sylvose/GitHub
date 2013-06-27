@@ -1,9 +1,9 @@
 package com.gabon.info.model.roles;
 
-import static com.gabon.info.util.RestFulConstants.AbstractRoles;
-import static com.gabon.info.util.RestFulConstants.ID;
-import static com.gabon.info.util.RestFulConstants.ROLE;
-import static com.gabon.info.util.RestFulConstants.USERS;
+import static com.gabon.info.util.Constants.AbstractRoles;
+import static com.gabon.info.util.Constants.ID;
+import static com.gabon.info.util.Constants.ROLE;
+import static com.gabon.info.util.Constants.USERS;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;

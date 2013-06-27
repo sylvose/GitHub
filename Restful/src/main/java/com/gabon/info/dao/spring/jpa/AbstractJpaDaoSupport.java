@@ -1,6 +1,6 @@
 package com.gabon.info.dao.spring.jpa;
 
-import static com.gabon.info.util.RestFulConstants.BEAN_ABSTRACT_JPA_DAO_SUPPORT;
+import static com.gabon.info.util.Constants.BEAN_ABSTRACT_JPA_DAO_SUPPORT;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;

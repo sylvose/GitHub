@@ -4,22 +4,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.gabon.info.dao.jpa.department.DepartmentDAO;
-import com.gabon.info.dao.jpa.department.DepartmentDAOFacade;
-import com.gabon.info.dao.jpa.office.OfficeDAO;
-import com.gabon.info.dao.jpa.office.OfficeDAOFacade;
-import com.gabon.info.dao.jpa.projects.ProjectsDAO;
-import com.gabon.info.dao.jpa.projects.ProjectsDAOFacade;
-import com.gabon.info.dao.jpa.roles.RolesDAO;
-import com.gabon.info.dao.jpa.roles.RolesDAOFacade;
-import com.gabon.info.dao.jpa.users.UsersDAO;
-import com.gabon.info.dao.jpa.users.UsersDAOFacade;
+import com.gabon.info.dao.spring.jpa.department.DepartmentDAO;
+import com.gabon.info.dao.spring.jpa.department.DepartmentDAOFacade;
+import com.gabon.info.dao.spring.jpa.office.OfficeDAO;
+import com.gabon.info.dao.spring.jpa.office.OfficeDAOFacade;
+import com.gabon.info.dao.spring.jpa.projects.ProjectsDAO;
+import com.gabon.info.dao.spring.jpa.projects.ProjectsDAOFacade;
+import com.gabon.info.dao.spring.jpa.roles.RolesDAO;
+import com.gabon.info.dao.spring.jpa.roles.RolesDAOFacade;
+import com.gabon.info.dao.spring.jpa.users.UsersDAO;
+import com.gabon.info.dao.spring.jpa.users.UsersDAOFacade;
 import com.gabon.info.model.department.Department;
 import com.gabon.info.model.office.Office;
 import com.gabon.info.model.projects.Projects;
 import com.gabon.info.model.roles.Roles;
 import com.gabon.info.model.users.Users;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * @author <a href="mailto:asylvose@yahoo.fr">Sylvose ALLOGO</a>
@@ -35,7 +35,7 @@ import com.gabon.info.util.RestFulConstants;
  * 
  */
 
-public class JpaDAO implements RestFulConstants {
+public class JpaDAO implements Constants {
 
 	private static final long serialVersionUID = 7152176377366845848L;
 	

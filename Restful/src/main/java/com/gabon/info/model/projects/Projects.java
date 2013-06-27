@@ -1,13 +1,13 @@
 package com.gabon.info.model.projects;
 
-import static com.gabon.info.util.RestFulConstants.BEAN_PROJECTS;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_PROJECTS_NAME;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_PROJECTS_QUERY;
-import static com.gabon.info.util.RestFulConstants.PROJECTS_SEQ;
-import static com.gabon.info.util.RestFulConstants.PROJECTS_SEQ_GEN;
-import static com.gabon.info.util.RestFulConstants.Projects;
-import static com.gabon.info.util.RestFulConstants.T_PROJECTS;
-import static com.gabon.info.util.RestFulConstants.UQAM;
+import static com.gabon.info.util.Constants.BEAN_PROJECTS;
+import static com.gabon.info.util.Constants.GET_ALL_PROJECTS_NAME;
+import static com.gabon.info.util.Constants.GET_ALL_PROJECTS_QUERY;
+import static com.gabon.info.util.Constants.PROJECTS_SEQ;
+import static com.gabon.info.util.Constants.PROJECTS_SEQ_GEN;
+import static com.gabon.info.util.Constants.Projects;
+import static com.gabon.info.util.Constants.T_PROJECTS;
+import static com.gabon.info.util.Constants.UQAM;
 
 import java.util.Set;
 

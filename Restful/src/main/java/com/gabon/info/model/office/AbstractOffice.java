@@ -1,9 +1,9 @@
 package com.gabon.info.model.office;
 
-import static com.gabon.info.util.RestFulConstants.AbstractOffice;
-import static com.gabon.info.util.RestFulConstants.ID;
-import static com.gabon.info.util.RestFulConstants.OFFICE;
-import static com.gabon.info.util.RestFulConstants.USERS;
+import static com.gabon.info.util.Constants.AbstractOffice;
+import static com.gabon.info.util.Constants.ID;
+import static com.gabon.info.util.Constants.OFFICE;
+import static com.gabon.info.util.Constants.USERS;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;

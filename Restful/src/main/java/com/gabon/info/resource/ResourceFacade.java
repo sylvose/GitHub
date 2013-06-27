@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 import com.sun.jersey.api.NotFoundException;
 
 /*
@@ -33,7 +33,7 @@ import com.sun.jersey.api.NotFoundException;
  * 
  */
 
-public interface ResourceFacade<T, E, PK extends Serializable> extends RestFulConstants, Serializable {
+public interface ResourceFacade<T, E, PK extends Serializable> extends Constants, Serializable {
 	
 	/**
 	 * @param entity

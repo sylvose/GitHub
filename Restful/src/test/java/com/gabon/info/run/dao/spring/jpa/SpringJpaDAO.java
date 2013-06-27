@@ -19,7 +19,7 @@ import com.gabon.info.model.office.Office;
 import com.gabon.info.model.projects.Projects;
 import com.gabon.info.model.roles.Roles;
 import com.gabon.info.model.users.Users;
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * @author <a href="mailto:asylvose@yahoo.fr">Sylvose ALLOGO</a>
@@ -35,7 +35,7 @@ import com.gabon.info.util.RestFulConstants;
  * 
  */
 
-public class SpringJpaDAO implements RestFulConstants {
+public class SpringJpaDAO implements Constants {
 
 	private static final long serialVersionUID = 7152176377366845848L;
 	

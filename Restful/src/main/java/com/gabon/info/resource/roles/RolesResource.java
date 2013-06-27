@@ -1,6 +1,6 @@
 package com.gabon.info.resource.roles;
 
-import static com.gabon.info.util.RestFulConstants.URI_PATH_ROLES;
+import static com.gabon.info.util.Constants.URI_PATH_ROLES;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;

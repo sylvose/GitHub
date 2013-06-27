@@ -1,13 +1,13 @@
 package com.gabon.info.model.users;
 
-import static com.gabon.info.util.RestFulConstants.AbstractUsers;
-import static com.gabon.info.util.RestFulConstants.DEPARTMENT;
-import static com.gabon.info.util.RestFulConstants.EMAIL;
-import static com.gabon.info.util.RestFulConstants.ID;
-import static com.gabon.info.util.RestFulConstants.NAME;
-import static com.gabon.info.util.RestFulConstants.OFFICE;
-import static com.gabon.info.util.RestFulConstants.PROJECTS;
-import static com.gabon.info.util.RestFulConstants.ROLES;
+import static com.gabon.info.util.Constants.AbstractUsers;
+import static com.gabon.info.util.Constants.DEPARTMENT;
+import static com.gabon.info.util.Constants.EMAIL;
+import static com.gabon.info.util.Constants.ID;
+import static com.gabon.info.util.Constants.NAME;
+import static com.gabon.info.util.Constants.OFFICE;
+import static com.gabon.info.util.Constants.PROJECTS;
+import static com.gabon.info.util.Constants.ROLES;
 
 import java.util.HashSet;
 import java.util.Set;

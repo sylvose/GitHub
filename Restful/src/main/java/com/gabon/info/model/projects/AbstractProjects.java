@@ -1,9 +1,9 @@
 package com.gabon.info.model.projects;
 
-import static com.gabon.info.util.RestFulConstants.AbstractProjects;
-import static com.gabon.info.util.RestFulConstants.ID;
-import static com.gabon.info.util.RestFulConstants.PROJECT;
-import static com.gabon.info.util.RestFulConstants.USERS;
+import static com.gabon.info.util.Constants.AbstractProjects;
+import static com.gabon.info.util.Constants.ID;
+import static com.gabon.info.util.Constants.PROJECT;
+import static com.gabon.info.util.Constants.USERS;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,13 +1,13 @@
 package com.gabon.info.model.department;
 
-import static com.gabon.info.util.RestFulConstants.BEAN_DEPARTMENT;
-import static com.gabon.info.util.RestFulConstants.DEPARTMENT_SEQ;
-import static com.gabon.info.util.RestFulConstants.DEPARTMENT_SEQ_GEN;
-import static com.gabon.info.util.RestFulConstants.Department;
-import static com.gabon.info.util.RestFulConstants.GET_ALL_DEPARTMENT_NAME;
-import static com.gabon.info.util.RestFulConstants.GET_DEPARTMENT_QUERY;
-import static com.gabon.info.util.RestFulConstants.T_DEPARTMENT;
-import static com.gabon.info.util.RestFulConstants.UQAM;
+import static com.gabon.info.util.Constants.BEAN_DEPARTMENT;
+import static com.gabon.info.util.Constants.DEPARTMENT_SEQ;
+import static com.gabon.info.util.Constants.DEPARTMENT_SEQ_GEN;
+import static com.gabon.info.util.Constants.Department;
+import static com.gabon.info.util.Constants.GET_ALL_DEPARTMENT_NAME;
+import static com.gabon.info.util.Constants.GET_DEPARTMENT_QUERY;
+import static com.gabon.info.util.Constants.T_DEPARTMENT;
+import static com.gabon.info.util.Constants.UQAM;
 
 import java.util.Set;
 

@@ -12,197 +12,6 @@
     ]]></doc><grammars><include
         href="schema.xsd"/></grammars><resources
             base="http://localhost:8080/restful/rest/userResource"><resource
-                path="roles"><resource path="save/entity"><method
-                    id="save" name="POST"><request><param name="Roles"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="delete/entity"><method id="delete"
-                            name="DELETE"><request><param name="Roles"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="delete/id"><method id="delete"
-                            name="DELETE"><request><param name="id"
-                            style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="update/entity"><method id="update"
-                            name="PUT"><request><param name="Roles"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="get/all"><method id="getAll"
-                            name="GET"><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all"><method id="findAll"
-                            name="GET"><request><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/id"><method id="findById"
-                            name="GET"><request><param name="id"
-                            style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all/role"><method id="findByRole"
-                            name="GET"><request><param name="role"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all/property"><method id="findByProperty"
-                            name="GET"><request><param
-                            name="propertyName" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="Object" style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-            mediaType="application/json"/></response></method></resource></resource><resource
-                path="departments"><resource path="save/entity"><method
-                    id="save" name="POST"><request><param
-                            name="Department" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="delete/entity"><method id="delete"
-                            name="DELETE"><request><param
-                            name="Department" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="delete/id"><method id="delete"
-                            name="DELETE"><request><param name="id"
-                            style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="update/entity"><method id="update"
-                            name="PUT"><request><param name="Department"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="get/all"><method id="getAll"
-                            name="GET"><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all/department"><method
-                    id="findByDepartment" name="GET"><request><param
-                            name="department" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all"><method id="findAll"
-                            name="GET"><request><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/id"><method id="findById"
-                            name="GET"><request><param name="id"
-                            style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all/property"><method id="findByProperty"
-                            name="GET"><request><param
-                            name="propertyName" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="Object" style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-            mediaType="application/json"/></response></method></resource></resource><resource
-                path="projects"><resource path="save/entity"><method
-                    id="save" name="POST"><request><param
-                            name="Projects" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="delete/entity"><method id="delete"
-                            name="DELETE"><request><param
-                            name="Projects" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="delete/id"><method id="delete"
-                            name="DELETE"><request><param name="id"
-                            style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="update/entity"><method id="update"
-                            name="PUT"><request><param name="Projects"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="get/all"><method id="getAll"
-                            name="GET"><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all/project"><method id="findByProject"
-                            name="GET"><request><param name="department"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all"><method id="findAll"
-                            name="GET"><request><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/id"><method id="findById"
-                            name="GET"><request><param name="id"
-                            style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all/property"><method id="findByProperty"
-                            name="GET"><request><param
-                            name="propertyName" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="Object" style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-            mediaType="application/json"/></response></method></resource></resource><resource
                 path="users"><resource path="save/entity"><method
                     id="save" name="POST"><request><param name="Users"
                             style="query" type="xs:string"
@@ -259,6 +68,135 @@
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
                             name="rowStartIdxAndCount" style="query"
                             type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all/property"><method id="findByProperty"
+                            name="GET"><request><param
+                            name="propertyName" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="Object" style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+            mediaType="application/json"/></response></method></resource></resource><resource
+                path="projects"><resource path="save/entity"><method
+                    id="save" name="POST"><request><param
+                            name="Projects" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="delete/entity"><method id="delete"
+                            name="DELETE"><request><param
+                            name="Projects" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="delete/id"><method id="delete"
+                            name="DELETE"><request><param name="id"
+                            style="query" type="xs:long"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="update/entity"><method id="update"
+                            name="PUT"><request><param name="Projects"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="get/all"><method id="getAll"
+                            name="GET"><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all"><method id="findAll"
+                            name="GET"><request><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all/project"><method id="findByProject"
+                            name="GET"><request><param name="department"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/id"><method id="findById"
+                            name="GET"><request><param name="id"
+                            style="query" type="xs:long"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all/property"><method id="findByProperty"
+                            name="GET"><request><param
+                            name="propertyName" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="Object" style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+            mediaType="application/json"/></response></method></resource></resource><resource
+                path="departments"><resource path="save/entity"><method
+                    id="save" name="POST"><request><param
+                            name="Department" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="delete/entity"><method id="delete"
+                            name="DELETE"><request><param
+                            name="Department" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="delete/id"><method id="delete"
+                            name="DELETE"><request><param name="id"
+                            style="query" type="xs:long"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="update/entity"><method id="update"
+                            name="PUT"><request><param name="Department"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="get/all"><method id="getAll"
+                            name="GET"><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all"><method id="findAll"
+                            name="GET"><request><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all/department"><method
+                    id="findByDepartment" name="GET"><request><param
+                            name="department" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/id"><method id="findById"
+                            name="GET"><request><param name="id"
+                            style="query" type="xs:long"
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
                             mediaType="application/xml"/><representation
                 mediaType="application/json"/></response></method></resource><resource
@@ -343,14 +281,14 @@
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
                             mediaType="application/xml"/><representation
                 mediaType="application/json"/></response></method></resource><resource
-                    path="delete/id"><method id="delete"
-                            name="DELETE"><request><param name="id"
+                    path="delete/entity"><method id="delete"
+                            name="DELETE"><request><param name="E"
                             style="query" type="xs:string"
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
                             mediaType="application/xml"/><representation
                 mediaType="application/json"/></response></method></resource><resource
-                    path="delete/entity"><method id="delete"
-                            name="DELETE"><request><param name="E"
+                    path="delete/id"><method id="delete"
+                            name="DELETE"><request><param name="id"
                             style="query" type="xs:string"
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
                             mediaType="application/xml"/><representation
@@ -365,6 +303,13 @@
                             name="GET"><response><representation
                             mediaType="application/xml"/><representation
                 mediaType="application/json"/></response></method></resource><resource
+                    path="find/all"><method id="findAll"
+                            name="GET"><request><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
                     path="find/all/property"><method id="findByProperty"
                             name="GET"><request><param
                             name="propertyName" style="query"
@@ -377,6 +322,40 @@
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
                             mediaType="application/xml"/><representation
                 mediaType="application/json"/></response></method></resource><resource
+                    path="find/id"><method id="findById"
+                            name="GET"><request><param name="id"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+            mediaType="application/json"/></response></method></resource></resource><resource
+                path="roles"><resource path="save/entity"><method
+                    id="save" name="POST"><request><param name="Roles"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="delete/entity"><method id="delete"
+                            name="DELETE"><request><param name="Roles"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="delete/id"><method id="delete"
+                            name="DELETE"><request><param name="id"
+                            style="query" type="xs:long"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="update/entity"><method id="update"
+                            name="PUT"><request><param name="Roles"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="get/all"><method id="getAll"
+                            name="GET"><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
                     path="find/all"><method id="findAll"
                             name="GET"><request><param
                             name="rowStartIdxAndCount" style="query"
@@ -386,6 +365,27 @@
                 mediaType="application/json"/></response></method></resource><resource
                     path="find/id"><method id="findById"
                             name="GET"><request><param name="id"
+                            style="query" type="xs:long"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all/role"><method id="findByRole"
+                            name="GET"><request><param name="role"
                             style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all/property"><method id="findByProperty"
+                            name="GET"><request><param
+                            name="propertyName" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="Object" style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
                             mediaType="application/xml"/><representation mediaType="application/json"/></response></method></resource></resource></resources></application>

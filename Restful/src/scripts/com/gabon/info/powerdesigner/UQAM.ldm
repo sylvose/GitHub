@@ -1776,7 +1776,7 @@ DAT 1372040490</a:History>
 <a:Creator>Sylvose ALLOGO</a:Creator>
 <a:ModificationDate>1372040490</a:ModificationDate>
 <a:Modifier>Sylvose ALLOGO</a:Modifier>
-<a:TargetModelURL>file:///D|/GitHub/Restful/src/scripts/com/gabon/info/UQAM/UQAM.pdm</a:TargetModelURL>
+<a:TargetModelURL>file:///%[PRJ_ROOT_DIR]%/UQAM.pdm</a:TargetModelURL>
 <a:TargetModelID>AC06A823-4ACF-4740-A7B7-124562A76FFC</a:TargetModelID>
 <a:TargetModelClassID>CDE44E21-9669-11D1-9914-006097355D9B</a:TargetModelClassID>
 <c:SessionShortcuts>

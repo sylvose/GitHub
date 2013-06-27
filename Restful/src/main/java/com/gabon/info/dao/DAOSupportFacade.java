@@ -3,7 +3,7 @@ package com.gabon.info.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import com.gabon.info.util.RestFulConstants;
+import com.gabon.info.util.Constants;
 
 /*
  * @author <a href="mailto:asylvose@yahoo.fr">Sylvose ALLOGO</a>
@@ -23,7 +23,7 @@ import com.gabon.info.util.RestFulConstants;
  * added to each of these methods for data to be persisted to the datastore.
  * 
  */
-public interface DAOSupportFacade<E, PK extends Serializable> extends RestFulConstants, Serializable {
+public interface DAOSupportFacade<E, PK extends Serializable> extends Constants, Serializable {
 	
 	PK getId(E entity);
 

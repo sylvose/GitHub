@@ -1,18 +1,11 @@
-package com.gabon.info.dao.spring.jpa.users;
-
-import static com.gabon.info.util.Constants.BEAN_USERS_DAO_JPA_SPRING;
+package com.gabon.info.dao.jpa.users;
 
 import java.util.List;
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.gabon.info.dao.spring.jpa.ConcreteDAOJpaSpring;
+import com.gabon.info.dao.jpa.ConcreteDAOJpa;
 import com.gabon.info.model.users.Users;
 
 /**
@@ -30,12 +23,10 @@ import com.gabon.info.model.users.Users;
  */
 
 @ThreadSafe
-@Transactional
-@Repository(BEAN_USERS_DAO_JPA_SPRING)
-public class UsersDAO extends ConcreteDAOJpaSpring<Users, Long> implements UsersDAOFacade<Users> {	
+public class UsersDAO extends ConcreteDAOJpa<Users> implements UsersDAOFacade<Users> {	
 	
-	private static final long serialVersionUID = 7641031870572687778L;
-
+	private static final long serialVersionUID = 7332635337769301698L;
+	
 	
 	@GuardedBy("this")
 	private static UsersDAOFacade<Users> usersDAOFacade;
@@ -43,8 +34,12 @@ public class UsersDAO extends ConcreteDAOJpaSpring<Users, Long> implements Users
 
 	public UsersDAO() { 
 		super();
-		this.clazzE = Users.class;
-		this.clazzPK = Long.class;
+		this.clazz = Users.class;
+	}
+	
+	public UsersDAO(Class<Users> clazz) { 
+		super(clazz);
+		this.clazz = clazz; 
 	}
 	
 	
@@ -56,56 +51,39 @@ public class UsersDAO extends ConcreteDAOJpaSpring<Users, Long> implements Users
 	}
 	
 	
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+	
 	public void save(final Users entity) {
 		super.save(entity);
 	}
 	
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void delete(final Users entity) {
 		super.delete(entity);
 	}
 	
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void delete(final Long id) {
 		super.delete(id);
 	}
 
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public Users update(final Users entity) {
 		return super.update(entity);
 	}
 
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public Users findById(final Long id) {
 		return super.findById(id);
 	}
 	
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public List<Users> findByName(final Object name, final int... rowStartIdxAndCount) {
 		return super.findByProperty("name", name, rowStartIdxAndCount);
 	}
 
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public List<Users> findByEmail(final Object email, final int... rowStartIdxAndCount) {
 		return super.findByProperty("email", email, rowStartIdxAndCount);
 	}
 	
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public List<Users> findAll(final int... rowStartIdxAndCount) {
 		return super.findAll(rowStartIdxAndCount);
 	}
 	
-	@Modifying
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public List<Users> getAll() {
 		return super.getAll();
 	}
