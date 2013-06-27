@@ -18,6 +18,7 @@ import com.gabon.info.model.department.Department;
  * Confidentiel
  * 
  */
+
 public class DepartmentDAO extends ConcreteDAOJpa<Department> implements DepartmentDAOFacade<Department> {
 
 	private static final long serialVersionUID = -3937788254521108651L;

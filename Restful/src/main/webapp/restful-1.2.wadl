@@ -11,7 +11,7 @@
         Dies in ein Abschnitt, der dem Beginn der generierte application.wadl hinzugefügt wird - in deutscher Sprache.
     ]]></doc><grammars><include
         href="schema.xsd"/></grammars><resources
-            base="http://localhost:8080/restful/rest/userResource"><resource
+            base="http://localhost:8080/restful/rest"><resource
                 path="users"><resource path="save/entity"><method
                     id="save" name="POST"><request><param name="Users"
                             style="query" type="xs:string"
@@ -64,6 +64,68 @@
                 mediaType="application/json"/></response></method></resource><resource
                     path="find/all/email"><method id="findByEmail"
                             name="GET"><request><param name="email"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all/property"><method id="findByProperty"
+                            name="GET"><request><param
+                            name="propertyName" style="query"
+                            type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="Object" style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+            mediaType="application/json"/></response></method></resource></resource><resource
+                path="offices"><resource path="save/entity"><method
+                    id="save" name="POST"><request><param name="Office"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="delete/entity"><method id="delete"
+                            name="DELETE"><request><param name="Office"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="delete/id"><method id="delete"
+                            name="DELETE"><request><param name="id"
+                            style="query" type="xs:long"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="update/entity"><method id="update"
+                            name="PUT"><request><param name="Office"
+                            style="query" type="xs:string"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="get/all"><method id="getAll"
+                            name="GET"><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all"><method id="findAll"
+                            name="GET"><request><param
+                            name="rowStartIdxAndCount" style="query"
+                            type="xs:int" repeating="true"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/id"><method id="findById"
+                            name="GET"><request><param name="id"
+                            style="query" type="xs:long"
+                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
+                            mediaType="application/xml"/><representation
+                mediaType="application/json"/></response></method></resource><resource
+                    path="find/all/office"><method id="findByOffice"
+                            name="GET"><request><param name="department"
                             style="query" type="xs:string"
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
                             name="rowStartIdxAndCount" style="query"
@@ -197,68 +259,6 @@
                     path="find/id"><method id="findById"
                             name="GET"><request><param name="id"
                             style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all/property"><method id="findByProperty"
-                            name="GET"><request><param
-                            name="propertyName" style="query"
-                            type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="Object" style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-            mediaType="application/json"/></response></method></resource></resource><resource
-                path="offices"><resource path="save/entity"><method
-                    id="save" name="POST"><request><param name="Office"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="delete/entity"><method id="delete"
-                            name="DELETE"><request><param name="Office"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="delete/id"><method id="delete"
-                            name="DELETE"><request><param name="id"
-                            style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="update/entity"><method id="update"
-                            name="PUT"><request><param name="Office"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="get/all"><method id="getAll"
-                            name="GET"><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all"><method id="findAll"
-                            name="GET"><request><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/id"><method id="findById"
-                            name="GET"><request><param name="id"
-                            style="query" type="xs:long"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
-                            mediaType="application/xml"/><representation
-                mediaType="application/json"/></response></method></resource><resource
-                    path="find/all/office"><method id="findByOffice"
-                            name="GET"><request><param name="department"
-                            style="query" type="xs:string"
-                            xmlns:xs="http://www.w3.org/2001/XMLSchema"/><param
-                            name="rowStartIdxAndCount" style="query"
-                            type="xs:int" repeating="true"
                             xmlns:xs="http://www.w3.org/2001/XMLSchema"/></request><response><representation
                             mediaType="application/xml"/><representation
                 mediaType="application/json"/></response></method></resource><resource

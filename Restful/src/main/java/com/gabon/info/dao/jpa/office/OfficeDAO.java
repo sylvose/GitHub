@@ -18,6 +18,7 @@ import com.gabon.info.model.office.Office;
  * Confidentiel
  * 
  */
+
 public class OfficeDAO extends ConcreteDAOJpa<Office> implements OfficeDAOFacade<Office> {
 	
 	private static final long serialVersionUID = -4861547024237667182L;

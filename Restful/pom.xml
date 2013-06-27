@@ -9,7 +9,7 @@
   <version>1.2</version>
   <packaging>war</packaging>
   <name>${project.artifactId}</name>
-  <description>Restful Jersey Webapp - RESTful Web Services</description>
+  <description>Rest + Spring + JPA - RestFul Web Service</description>
   <url>http://github.com/sylvose/${project.artifactId}</url>
   <inceptionYear>2013</inceptionYear>
   
@@ -96,22 +96,22 @@
   </distributionManagement>
   
   <properties>
+    <maven.home>${env.MAVEN_HOME}</maven.home>
     <maven.version>3.0.5</maven.version>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
-    <user.server>administrator</user.server>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <archiver.version>Plexus Archiver</archiver.version>
     <built.by>Apache Maven ${maven.version}</built.by>
-    <baseUri>http://localhost:8080/restful/rest/userResource</baseUri>
+    <baseUri>http://localhost:8080/restful/rest</baseUri>
     <jersey-version>1.9-ea04</jersey-version>
     <spring-version>3.2.0.RELEASE</spring-version>
+    <server.home>${env.CATALINA_HOME}</server.home>
     <server.port>8080</server.port>
     <host.server>127.0.0.1</host.server>
-    <org.springframework.version>2.5.6</org.springframework.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <user.server>administrator</user.server>
     <password.server>adm1n1strat0r</password.server>
-    <archiver.version>Plexus Archiver</archiver.version>
-    <server.home>${env.CATALINA_HOME}</server.home>
     <java.home>${env.JAVA_HOME}</java.home>
   </properties>
   
@@ -886,17 +886,18 @@
           </execution>
         </executions>
       </plugin>
+      <!--
       <plugin>
 		<groupId>eviware</groupId>
 		<artifactId>maven-soapui-plugin</artifactId>
 		<version>4.0.1</version>
 		<configuration>
-		    <!--
+		    
 		    <testSuite>XXXTest</testSuite>
 	   		<iface>YYYService</iface>
 	   		<tool>wsi</tool>
 	   		<settingsFile>${project.basedir}/src/main/resources/com/gabon/info/soapui-settings.xml</settingsFile>
-		    -->
+		    
 		    <exportAll>true</exportAll>
         	<printReport>true</printReport>
 		    <junitReport>true</junitReport>
@@ -922,6 +923,7 @@
 			</execution>
 		</executions>
 	</plugin>
+	-->
    </plugins>
   </build>
  
@@ -987,16 +989,6 @@
       <version>${jersey-version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-beans</artifactId>
-		<version>${spring-version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-tx</artifactId>
-		<version>${spring-version}</version>
-	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
@@ -1004,46 +996,15 @@
 	</dependency>
     <dependency>
         <groupId>org.springframework</groupId>
-        <artifactId>spring-orm</artifactId>
-        <version>${spring-version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-jdbc</artifactId>
-        <version>${spring-version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework</groupId>
 		<artifactId>spring-test</artifactId>
 		<version>${spring-version}</version>
 		<scope>test</scope>
-		<exclusions>
-			<exclusion>
-				<groupId>org.springframework</groupId>
-        		<artifactId>spring-web</artifactId>
-			</exclusion>
-		</exclusions>
     </dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-tomcat-weaver</artifactId>
-		<version>2.5.6</version>
-	</dependency>
-	<dependency>
+    <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-web</artifactId>
         <version>2.5</version>
     </dependency>
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-jpa</artifactId>
-        <version>2.0</version>
-    </dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-dao</artifactId>
-		<version>1.1.5</version>
-	</dependency>
 	<dependency>
 		<groupId>org.springframework.data</groupId>
 		<artifactId>spring-data-jpa</artifactId>
@@ -1055,26 +1016,11 @@
         <version>3.5.0-Final</version>
     </dependency>
     <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>3.5.0-Final</version>
-    </dependency>
-    <dependency>
        <groupId>org.dynadto</groupId>
        <artifactId>dynadto</artifactId>
        <version>1.0</version>
     </dependency>
     <dependency>
-        <groupId>com.atomikos</groupId>
-        <artifactId>transactions-hibernate3</artifactId>
-        <version>3.2.3</version>
-    </dependency>
-    <dependency>
-        <groupId>com.atomikos</groupId>
-        <artifactId>transactions-jta</artifactId>
-        <version>3.6.4</version>
-    </dependency> 
-     <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-api</artifactId>
          <version>1.6.2</version>

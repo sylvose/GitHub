@@ -48,7 +48,7 @@ import com.gabon.info.dao.DAOSupportFacade;
  * 
  */
 
-@SuppressWarnings({"deprecation", "unchecked"})
+@SuppressWarnings({"unchecked"})
 @Transactional
 @Repository(BEAN_ABSTRACT_JPA_DAO_SUPPORT)
 public abstract class AbstractJpaDaoSupport<E, PK extends Serializable> extends JpaDaoSupport implements DAOSupportFacade<E, PK> {
