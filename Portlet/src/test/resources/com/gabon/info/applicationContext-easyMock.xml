@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       					   http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-3.1.xsd
+       					   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       					   http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+       					   http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/util/spring-mvc-3.1.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+                           http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.1.xsd">
+	   
+    
+    <!-- 
+	<bean id="userFacadeMock" class="org.easymock.EasyMock" factory-method="createMock">
+	      <constructor-arg index="0" value="com.gabon.info.model.user.UserFacade" />
+	</bean>
+	
+	<bean id="userResourceFacadeMock" class="org.easymock.EasyMock" factory-method="createMock">
+	      <constructor-arg index="0" value="com.gabon.info.resource.UserResourceFacade" />
+	</bean>
+	
+	<bean id="userServiceFacadeMock" class="org.easymock.EasyMock" factory-method="createMock">
+	      <constructor-arg index="0" value="com.gabon.info.service.UserServiceFacade" />
+	</bean>
+	
+	<bean id="iUserDAOMock" class="org.easymock.EasyMock" factory-method="createMock">
+	      <constructor-arg index="0" value="com.gabon.info.model.user.IUserDAO" />
+	</bean>
+	-->
+	
+</beans>
