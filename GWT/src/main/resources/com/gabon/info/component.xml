@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE component PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "component.dtd">
+
+<component>
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>/lib</outputDirectory>
+			<includes>
+				<include>application:logging</include>
+				<include>application:core</include>
+				<include>application:utils</include>
+			</includes>
+		</dependencySet>
+	</dependencySets>
+</component>

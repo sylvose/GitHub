@@ -1,0 +1,6 @@
+<!--
+        This DTD cannot be used on its own, it is intended
+        only for incorporation in XMLSchema.dtd, q.v.
+-->
+
+<!-- Define all the element names, with optional prefix -->

@@ -1,0 +1,43 @@
+<!DOCTYPE module PUBLIC "//gwt-module/" "http://google-web-toolkit.googlecode.com/svn/tags/1.6.2/distro-source/core/src/gwt-module.dtd">
+<module>
+
+      <!-- Inherit the core Web Toolkit stuff.                        -->
+      <inherits name='com.google.gwt.user.User' />
+
+	  <!-- We need the JUnit module in the main module. -->
+	  <!-- otherwise eclipse complains (Google plugin bug?) -->
+	  <inherits name='com.google.gwt.junit.JUnit' />
+	
+      <!-- Inherit the default GWT style sheet. You can change -->
+	  <!-- the theme of your GWT application by uncommenting -->
+	  <!-- any one of the following lines. -->
+	  <inherits name='com.google.gwt.user.theme.standard.Standard' />
+	  <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+	  <!-- <inherits name='com.google.gwt.user.theme.dark.Dark' /> -->
+	  <inherits name='com.google.gwt.rpc.RPC' />
+
+	  <!-- Other module inherits -->
+	  <inherits name="com.google.gwt.resources.Resources" />
+	
+	  <!-- Activities and Places -->
+	  <inherits name="com.google.gwt.activity.Activity" />
+	  <inherits name="com.google.gwt.place.Place" />
+	 
+	  <!-- Inherit internationalization support.                      -->
+	  <inherits name='com.google.gwt.i18n.I18N' />
+	  
+	  <extend-property name="locale" values="fr" />
+	  
+	  <extend-property name="locale" values="en" />
+	   
+      <!-- Specify the app entry point class.                         -->
+      <entry-point class='com.gabon.info.client.Client'/>
+
+      <!-- Specify the application specific style sheet.              -->
+      <stylesheet src='Client.css' />
+       
+	  <!-- Specify the paths for translatable code -->
+	  <source path='client' />
+	  <source path='shared' />
+
+</module>

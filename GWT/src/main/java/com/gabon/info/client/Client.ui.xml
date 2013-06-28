@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel ui:field="channelPanel" styleName="chan">
+		<g:Image ui:field="channelLogo"></g:Image>
+		<g:FlowPanel ui:field="inputField"></g:FlowPanel>
+		<g:Anchor ui:field="chanEdit" styleName="btnConfig" href="javascript:"></g:Anchor>
+		<g:Anchor ui:field="chanAdd" styleName="btnAdd" href="javascript:"></g:Anchor>
+		<g:Anchor ui:field="chanStatus" styleName="chanStatus" href="javascript:"></g:Anchor>
+	</g:HTMLPanel>
+</ui:UiBinder> 
