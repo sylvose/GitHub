@@ -325,7 +325,7 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 				if (!connection.isClosed()) 
 				connection.rollback();
 			} catch (SQLException sql) {
-				logger.log(Level.SEVERE, SAVE_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), sql);
+				logger.log(Level.SEVERE, SAVE_FAILED + sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
 			}
 			throw e;
 		} catch (SQLException sql) {
@@ -440,7 +440,7 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 				if (!connection.isClosed()) 
 				connection.rollback();
 			} catch (SQLException sql) {
-				logger.log(Level.SEVERE, UPDATE_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), sql);
+				logger.log(Level.SEVERE, UPDATE_FAILED + sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
 			}
 			throw e;
 		} catch (SQLException sql) {

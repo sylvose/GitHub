@@ -279,7 +279,7 @@ public abstract class AbstractJdbcDAO<E> implements DAOFacade<E> {
 				if (!connection.isClosed()) 
 				connection.rollback();
 			} catch (SQLException sql) {
-				logger.log(Level.SEVERE, SAVE_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), sql);
+				logger.log(Level.SEVERE, SAVE_FAILED + sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
 			}
 			throw e;
 		} catch (SQLException sql) {
@@ -333,7 +333,7 @@ public abstract class AbstractJdbcDAO<E> implements DAOFacade<E> {
 				if (!connection.isClosed()) 
 				connection.rollback();
 			} catch (SQLException sql) {
-				logger.log(Level.SEVERE, DELETE_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), sql);
+				logger.log(Level.SEVERE, DELETE_FAILED + sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
 			}
 			throw e;
 		} catch (SQLException sql) {

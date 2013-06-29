@@ -10,11 +10,7 @@ import static com.gabon.info.server.util.Constants.Projects;
 import static com.gabon.info.server.util.Constants.T_PROJECTS;
 import static com.gabon.info.server.util.Constants.UQAM;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Set;
-import java.util.logging.Level;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;
@@ -25,12 +21,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.sql.DataSource;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.stereotype.Component;
 
-import com.gabon.info.server.dao.jdbc.JdbcHelper;
+import com.gabon.info.server.dao.spring.jdbc.projects.ProjectsDAO;
+import com.gabon.info.server.dao.spring.jdbc.projects.ProjectsDAOFacade;
+import com.gabon.info.server.dao.spring.jdbc.users.UsersDAO;
+import com.gabon.info.server.dao.spring.jdbc.users.UsersDAOFacade;
 import com.gabon.info.server.model.users.Users;
 
 /*
@@ -111,58 +109,18 @@ public final class Projects extends AbstractProjects implements ProjectsFacade {
 	@XmlTransient
 	@Transient
 	public void assignProjectsToUsers(final Long projectsId, final Long usersId) {
-		
 		if (projectsId != null && usersId != null) {
+			final ProjectsDAOFacade<Projects> projectsDAOFacade = ProjectsDAO.getInstance();
+			final Projects projects = projectsDAOFacade.findById(usersId);
 			
-			final JdbcHelper jdbcHelper = new JdbcHelper();
+			final UsersDAOFacade<Users> usersDAOFacade = UsersDAO.getInstance();
+			final Users users = usersDAOFacade.findById(usersId);
 			
-			try {
-				Connection connection = jdbcHelper.getConnection();
-				connection.setAutoCommit(false);
-				
-				if (connection == null || connection.isClosed()) {
-					final DataSource dataSource = jdbcHelper.getDataSource();
-					connection = dataSource.getConnection();
-				}
-				
-				if (connection != null)
-					connection.setAutoCommit(false);
-				
-				
-				this.clazz = Users.class;
-				this.queryString = QUERY_STRING_SELECT_STAR_FROM_UQAM_TABLE + this.clazz.getSimpleName().toUpperCase() + CLAUSE_STRING_WHERE_ID + usersId;
-				this.preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-				this.resultSet = preparedStatement.executeQuery();
-				Users users = null;
-				if (this.resultSet.next())
-					users = Users.class.cast(mapperResultSetToGeneric(this.resultSet));
-				
-				
-				this.clazz = Projects.class;
-				this.queryString = QUERY_STRING_SELECT_STAR_FROM_UQAM_TABLE + this.clazz.getSimpleName().toUpperCase() + CLAUSE_STRING_WHERE_ID + projectsId;
-				this.preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-				Projects projects = null;
-				if (this.resultSet.next())
-				this.resultSet = preparedStatement.executeQuery();
-					projects = Projects.class.cast(mapperResultSetToGeneric(this.resultSet));
-				
-					
-				if (users != null) 	
-					users.getProjects().add(projects);
-				
-				if (projects != null) 
-					projects.getUsers().add(users);
-				
-			} catch (RuntimeException r) {
-				logger.log(Level.SEVERE, r.getClass().getName() + MESSAGE + r.getMessage(), r);
-				throw r;
-			} catch (SQLException sql) {
-				logger.log(Level.SEVERE, sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
-		    } catch (Exception e) {
-		    	logger.log(Level.SEVERE, e.getClass().getName() + MESSAGE + e.getMessage(), e);
-			} finally {
-				jdbcHelper.close();
-			}
+			if (projects != null) 
+				projects.getUsers().add(users);
+			
+			if (users != null) 	
+				users.getProjects().add(projects);
 		}
 	}
 }
