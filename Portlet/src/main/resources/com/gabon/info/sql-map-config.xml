@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig
+    PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<!-- Assurez vous de toujours utiliser l'en-tête XML ci dessus! -->
+
+<sqlMapConfig>
+
+    <!-- On peut faire référence aux propriétés (nom=valeur) du fichier ci-dessous depuis le fichier de
+		 configuration (ex: “${driver}”. Ce fichier est optionnel. Le chemin est relatif au typepath. -->
+
+	<properties resource="oracle.properties"/>
+	  
+	<!-- Ces paramètres permettent de configurer SqlMaps, ils concernent principalement la gestion
+		 des transactions. Ils sont optionnels (reportez vous au guide du développeur pour plus d'informations). -->
+
+	  <settings
+	    cacheModelsEnabled="false"
+	    enhancementEnabled="false"
+	    errorTracingEnabled="false"
+	    useStatementNamespaces="false"
+	    maxRequests="512"
+		maxSessions="128"
+		maxTransactions="32"
+	  />
+	  
+	  <!-- Les alias vous permettent de faire référence à une typee en utilisant un nom court à la place
+		   du nom complet de la typee (nom + package). -->
+		   
+		   <typeAlias alias="abstractModel" type="com.gabon.info.model.AbstractModel" />
+		   <typeAlias alias="users" type="com.gabon.info.model.users.Users" />
+		   <typeAlias alias="abstractUsers" type="com.gabon.info.model.users.AbstractUsers" />
+		   <typeAlias alias="roles" type="com.gabon.info.model.roles.Roles" />
+		   <typeAlias alias="abstractRoles" type="com.gabon.info.model.roles.AbstractRoles" />
+		   <typeAlias alias="projects" type="com.gabon.info.model.projects.Projects" />
+		   <typeAlias alias="abstractProjects" type="com.gabon.info.model.projects.AbstractProjects" />
+		   <typeAlias alias="office" type="com.gabon.info.model.office.Office" />
+		   <typeAlias alias="abstractOffice" type="com.gabon.info.model.office.AbstractOffice" />
+		   <typeAlias alias="department" type="com.gabon.info.model.department.Department" />
+		   <typeAlias alias="abstractDepartment" type="com.gabon.info.model.department.AbstractDepartment" />	
+
+	  <!-- Configure un datasource utilisé par SQL Map, basé sur l'implémentation SimpleDataSource.
+		   Notez l'utilisation des propriétés contenues dans le fichier de propriétés ci-dessus -->
+
+		<transactionManager type="JDBC">
+			<dataSource type="SIMPLE">
+				<property value="${driver}" name="JDBC.Driver"/>
+				<property value="${url}" name="JDBC.ConnectionURL"/>
+				<property value="${username}" name="JDBC.Username"/>
+				<property value="${password}" name="JDBC.Password"/>
+				
+				<property name="Pool.MaximumCheckoutTime" value="120000"/> 
+				<property name="Pool.TimeToWait" value="10000"/> 
+				<property name="Pool.PingQuery" value="select * from dual"/> 
+				<property name="Pool.PingEnabled" value="false"/> 
+				<property name="Pool.PingConnectionsOlderThan" value="1"/> 
+				<property name="Pool.PingConnectionsNotUsedFor" value="1"/>
+				
+				<property name="Pool.MaximumActiveConnections" value="15"/> 
+				<property name="Pool.MaximumIdleConnections" value="15"/> 
+				<property name="Pool.MaximumWait" value="60000"/> 
+	
+				<property name="Pool.ValidationQuery" value="select count(*) from dual"/> 
+				<property name="Pool.LogAbandoned" value="false"/> 
+				<property name="Pool.RemoveAbandoned" value="false"/> 
+				<property name="Pool.RemoveAbandonedTimeout" value="50000"/>
+				
+				<property name="DefaultAutoCommit" value="false"/>
+				<property name="SetAutoCommitAllowed" value="false"/>
+			</dataSource>
+		</transactionManager>
+		
+		
+	<!-- Identifie tous les fichiers XML SQL Maps à charger. Notez que les chemins sont relatifs au classpath. Pour le moment il n'y en a qu'un -->
+
+	<sqlMap resource="sqlmap/Users.xml" />
+	<sqlMap resource="sqlmap/Projects.xml" />
+	<sqlMap resource="sqlmap/Office.xml" />
+	<sqlMap resource="sqlmap/Department.xml" />
+	<sqlMap resource="sqlmap/Roles.xml" />
+
+</sqlMapConfig>

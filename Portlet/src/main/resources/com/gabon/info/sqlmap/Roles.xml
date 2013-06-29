@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap rolespace="Roles">
+
+    <typeAlias alias="Map" type="java.util.Map" />
+	<typeAlias alias="Roles" type="com.gabon.info.model.roles.Roles" />
+	
+	
+    <parameterMap id="parameterMap-save-Roles" class="Map">
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="usersid"           javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="role"              javaType="java.lang.String"  jdbcType="VARCHAR" />
+	</parameterMap>
+    <insert id="saveRoles" parameterMap="parameterMap-save-Roles">
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT UQAM.ROLES_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO UQAM.ROLES (ID, USERSID, ROLE) VALUES (?,?,?)
+	</insert>
+	
+    
+    <parameterMap id="parameterMap-delete-Roles" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<delete id="deleteRoles" parameterMap="parameterMap-delete-Roles">
+		DELETE FROM UQAM.ROLES WHERE ID = ?
+	</delete>
+    
+    
+	<parameterMap id="parameterMap-update-Roles" class="Map">
+		<parameter property="usersid"           javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="role"              javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+	</parameterMap>
+	<update id="updateRoles" parameterMap="parameterMap-update-Roles">
+		UPDATE UQAM.ROLES SET USERSID = ?, ROLE = ? WHERE ID = ?
+	</update>
+	
+	
+	<resultMap id="resultMap-findById-Roles" class="Roles">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="usersid"              column="USERSID"             columnIndex="2" />
+    	<result property="role"                 column="ROLE"                columnIndex="3" />
+	</resultMap>
+	<parameterMap id="parameterMap-findById-Roles" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<select id="findByIdRoles" resultMap="resultMap-findById-Roles" parameterMap="parameterMap-findById-Roles">
+		<![CDATA[
+			SELECT ID, USERSID, ROLE FROM UQAM.ROLES WHERE ID = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+	
+	<resultMap id="resultMap-findByProperty-Roles" class="Roles">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="usersid"              column="USERSID"             columnIndex="2" />
+    	<result property="role"                 column="ROLE"                columnIndex="3" />
+	</resultMap>
+	<parameterMap id="parameterMap-findByProperty-Roles" class="Map">
+		<parameter property="role"                javaType="java.lang.String" jdbcType="VARCHAR" />
+	</parameterMap>
+	<select id="findByPropertyRoles" resultMap="resultMap-findByProperty-Roles" parameterMap="parameterMap-findByProperty-Roles">
+		<![CDATA[
+			SELECT ID, USERSID, ROLE FROM UQAM.ROLES WHERE ROLE = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-findAll-Roles" class="Roles">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="usersid"              column="USERSID"             columnIndex="2" />
+    	<result property="role"                 column="ROLE"                columnIndex="3" />
+	</resultMap>
+	<select id="findAllRoles" resultMap="resultMap-findAll-Roles">
+		<![CDATA[
+			SELECT ID, USERSID, ROLE FROM UQAM.ROLES ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-getAll-Roles" class="Roles">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="usersid"              column="USERSID"             columnIndex="2" />
+    	<result property="role"                 column="ROLE"                columnIndex="3" />
+	</resultMap>
+	<select id="getAllRoles" resultMap="resultMap-getAll-Roles">
+		<![CDATA[
+			SELECT ID, USERSID, ROLE FROM UQAM.ROLES ORDER BY ID ASC
+		]]>
+	</select>
+</sqlMap>

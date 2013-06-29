@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Users">
+
+    <typeAlias alias="Map" type="java.util.Map" />
+	<typeAlias alias="Users" type="com.gabon.info.model.users.Users" />
+	
+	
+    <parameterMap id="parameterMap-save-Users" class="Map">
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="officeid"          javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="departmentid"      javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="name"              javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="email"             javaType="java.lang.String"  jdbcType="VARCHAR" />
+	</parameterMap>
+    <insert id="saveUsers" parameterMap="parameterMap-save-Users">
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT UQAM.USERS_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO UQAM.USERS (ID, OFFICEID, DEPARTMENTID, NAME, EMAIL) VALUES (?,?,?,?,?)
+	</insert>
+	
+    
+    <parameterMap id="parameterMap-delete-Users" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<delete id="deleteUsers" parameterMap="parameterMap-delete-Users">
+		DELETE FROM UQAM.USERS WHERE ID = ?
+	</delete>
+    
+    
+	<parameterMap id="parameterMap-update-Users" class="Map">
+		<parameter property="officeid"          javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="departmentid"      javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="name"              javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="email"             javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+	</parameterMap>
+	<update id="updateUsers" parameterMap="parameterMap-update-Users">
+		UPDATE UQAM.USERS SET OFFICEID = ?, DEPARTMENTID = ?, NAME = ?, EMAIL = ? WHERE ID = ?
+	</update>
+	
+	
+	<resultMap id="resultMap-findById-Users" class="Users">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="officeid"             column="OFFICEID"            columnIndex="2" />
+    	<result property="departmentid"         column="DEPARTMENTID"        columnIndex="3" />
+    	<result property="name"                 column="NAME"                columnIndex="4" />
+    	<result property="email"                column="EMAIL"               columnIndex="5" />
+	</resultMap>
+	<parameterMap id="parameterMap-findById-Users" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<select id="findByIdUsers" resultMap="resultMap-findById-Users" parameterMap="parameterMap-findById-Users">
+		<![CDATA[
+			SELECT ID, OFFICEID, DEPARTMENTID, NAME, EMAIL FROM UQAM.USERS WHERE ID = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+	
+	<resultMap id="resultMap-findByProperty-Users" class="Users">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="officeid"             column="OFFICEID"            columnIndex="2" />
+    	<result property="departmentid"         column="DEPARTMENTID"        columnIndex="3" />
+    	<result property="name"                 column="NAME"                columnIndex="4" />
+    	<result property="email"                column="EMAIL"               columnIndex="5" />
+	</resultMap>
+	<parameterMap id="parameterMap-findByProperty-Users" class="Map">
+		<parameter property="name"                javaType="java.lang.String" jdbcType="VARCHAR" />
+		<parameter property="email"               javaType="java.lang.String" jdbcType="VARCHAR" />
+	</parameterMap>
+	<select id="findByPropertyUsers" resultMap="resultMap-findByProperty-Users" parameterMap="parameterMap-findByProperty-Users">
+		<![CDATA[
+			SELECT ID, OFFICEID, DEPARTMENTID, NAME, EMAIL FROM UQAM.USERS WHERE NAME = ? OR EMAIL = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-findAll-Users" class="Users">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="officeid"             column="OFFICEID"            columnIndex="2" />
+    	<result property="departmentid"         column="DEPARTMENTID"        columnIndex="3" />
+    	<result property="name"                 column="NAME"                columnIndex="4" />
+    	<result property="email"                column="EMAIL"               columnIndex="5" />
+	</resultMap>
+	<select id="findAllUsers" resultMap="resultMap-findAll-Users">
+		<![CDATA[
+			SELECT ID, OFFICEID, DEPARTMENTID, NAME, EMAIL FROM UQAM.USERS ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-getAll-Users" class="Users">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="officeid"             column="OFFICEID"            columnIndex="2" />
+    	<result property="departmentid"         column="DEPARTMENTID"        columnIndex="3" />
+    	<result property="name"                 column="NAME"                columnIndex="4" />
+    	<result property="email"                column="EMAIL"               columnIndex="5" />
+	</resultMap>
+	<select id="getAllUsers" resultMap="resultMap-getAll-Users">
+		<![CDATA[
+			SELECT ID, OFFICEID, DEPARTMENTID, NAME, EMAIL FROM UQAM.USERS ORDER BY ID ASC
+		]]>
+	</select>
+</sqlMap>

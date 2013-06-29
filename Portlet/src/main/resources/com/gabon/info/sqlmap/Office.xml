@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap officespace="Office">
+
+    <typeAlias alias="Map" type="java.util.Map" />
+	<typeAlias alias="Office" type="com.gabon.info.model.office.Office" />
+	
+	
+    <parameterMap id="parameterMap-save-Office" class="Map">
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="office"            javaType="java.lang.String"  jdbcType="VARCHAR" />
+	</parameterMap>
+    <insert id="saveOffice" parameterMap="parameterMap-save-Office">
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT UQAM.OFFICE_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO UQAM.OFFICE (ID, OFFICE) VALUES (?,?)
+	</insert>
+	
+    
+    <parameterMap id="parameterMap-delete-Office" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<delete id="deleteOffice" parameterMap="parameterMap-delete-Office">
+		DELETE FROM UQAM.OFFICE WHERE ID = ?
+	</delete>
+    
+    
+	<parameterMap id="parameterMap-update-Office" class="Map">
+		<parameter property="office"            javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+	</parameterMap>
+	<update id="updateOffice" parameterMap="parameterMap-update-Office">
+		UPDATE UQAM.OFFICE SET OFFICE = ? WHERE ID = ?
+	</update>
+	
+	
+	<resultMap id="resultMap-findById-Office" class="Office">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="office"           column="OFFICE"                  columnIndex="2" />
+	</resultMap>
+	<parameterMap id="parameterMap-findById-Office" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<select id="findByIdOffice" resultMap="resultMap-findById-Office" parameterMap="parameterMap-findById-Office">
+		<![CDATA[
+			SELECT ID, OFFICE FROM UQAM.OFFICE WHERE ID = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+	
+	<resultMap id="resultMap-findByProperty-Office" class="Office">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="office"               column="OFFICE"              columnIndex="2" />
+	</resultMap>
+	<parameterMap id="parameterMap-findByProperty-Office" class="Map">
+		<parameter property="office"                javaType="java.lang.String" jdbcType="VARCHAR" />
+	</parameterMap>
+	<select id="findByPropertyOffice" resultMap="resultMap-findByProperty-Office" parameterMap="parameterMap-findByProperty-Office">
+		<![CDATA[
+			SELECT ID, OFFICE FROM UQAM.OFFICE WHERE OFFICE = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-findAll-Office" class="Office">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="office"               column="OFFICE"              columnIndex="2" />
+	</resultMap>
+	<select id="findAllOffice" resultMap="resultMap-findAll-Office">
+		<![CDATA[
+			SELECT ID, OFFICE FROM UQAM.OFFICE ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-getAll-Office" class="Office">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="office"               column="OFFICE"              columnIndex="2" />
+	</resultMap>
+	<select id="getAllOffice" resultMap="resultMap-getAll-Office">
+		<![CDATA[
+			SELECT ID, OFFICE FROM UQAM.OFFICE ORDER BY ID ASC
+		]]>
+	</select>
+</sqlMap>

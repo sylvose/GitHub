@@ -22,11 +22,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
-import com.gabon.info.dao.hibernate.HibernateHelper;
+import com.gabon.info.dao.spring.ibatis.projects.ProjectsDAO;
+import com.gabon.info.dao.spring.ibatis.projects.ProjectsDAOFacade;
+import com.gabon.info.dao.spring.ibatis.users.UsersDAO;
+import com.gabon.info.dao.spring.ibatis.users.UsersDAOFacade;
 import com.gabon.info.model.users.Users;
 
 /*
@@ -108,14 +109,17 @@ public final class Projects extends AbstractProjects implements ProjectsFacade {
 	@Transient
 	public void assignProjectsToUsers(final Long projectsId, final Long usersId) {
 		if (projectsId != null && usersId != null) {
-			final HibernateHelper hibernateHelper = new HibernateHelper();
-			final SessionFactory sessionFactory = hibernateHelper.getSessionFactory();
-			final Session session = sessionFactory.openSession();
-			final Users users = Users.class.cast(session.get(Users.class, usersId));
-			final Projects projects = Projects.class.cast(session.get(Projects.class, projectsId));
+			final ProjectsDAOFacade<Projects> projectsDAOFacade = ProjectsDAO.getInstance();
+			final Projects projects = projectsDAOFacade.findById(projectsId);
 			
-			users.getProjects().add(projects);
-			projects.getUsers().add(users);
+			final UsersDAOFacade<Users> usersDAOFacade = UsersDAO.getInstance();
+			final Users users = usersDAOFacade.findById(usersId);
+			
+			if (projects != null) 
+				projects.getUsers().add(users);
+			
+			if (users != null) 	
+				users.getProjects().add(projects);
 		}
 	}
 }

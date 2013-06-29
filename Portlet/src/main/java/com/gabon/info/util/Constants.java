@@ -39,8 +39,8 @@ public interface Constants extends Serializable {
 	int CONCRETE_DAO_JPA = 3;
 	int CONCRETE_DAO_JPA_SPRING = 4;
 	
-	int CONCRETE_DAO_HIBERNATE = 5;
-	int CONCRETE_DAO_HIBERNATE_SPRING = 6;
+	int CONCRETE_DAO_IBATIS = 1;
+	int CONCRETE_DAO_IBATIS_SPRING = 2;
 	
 	String NULL = "null";
 	
@@ -127,7 +127,6 @@ public interface Constants extends Serializable {
     String LOOKUP = "lookup";
     
     
-    
     String QUERY_STRING_SELECT_DISTINCT_MODEL_FROM_UQAM_TABLE = "SELECT DISTINCT model FROM ";
     String PREDICAT_STRING_MODEL = " model";
     String CLAUSE_STRING_MODEL_WHERE_MODEL_DOT = " model WHERE model.";
@@ -141,6 +140,51 @@ public interface Constants extends Serializable {
     
     String INSTANCE = " instance";
     String INSTANCE_FAILED_NO_ROWS_AFFECTED = " instance failed, no rows affected";
+    
+    
+    String SAVE_USERS = "saveUsers";
+    String DELETE_USERS = "deleteUsers";
+    String UPDATE_USERS = "updateUsers";
+    String FIND_BY_ID_USERS = "findByIdUsers";
+    String FIND_BY_PROPERTY_USERS = "findByPropertyUsers";
+    String FIND_ALL_USERS = "findAllUsers";
+    String GET_ALL_USERS = "getAllUsers";
+    
+    
+    String SAVE_PROJECTS = "saveProjects";
+    String DELETE_PROJECTS = "deleteProjects";
+    String UPDATE_PROJECTS = "updateProjects";
+    String FIND_BY_ID_PROJECTS = "findByIdProjects";
+    String FIND_BY_PROPERTY_PROJECTS = "findByPropertyProjects";
+    String FIND_ALL_PROJECTS = "findAllProjects";
+    String GET_ALL_PROJECTS = "getAllProjects";
+    
+    
+    String SAVE_ROLES = "saveRoles";
+    String DELETE_ROLES = "deleteRoles";
+    String UPDATE_ROLES = "updateRoles";
+    String FIND_BY_ID_ROLES = "findByIdRoles";
+    String FIND_BY_PROPERTY_ROLES = "findByPropertyRoles";
+    String FIND_ALL_ROLES = "findAllRoles";
+    String GET_ALL_ROLES = "getAllRoles";
+    
+    
+    String SAVE_OFFICE = "saveOffice";
+    String DELETE_OFFICE = "deleteOffice";
+    String UPDATE_OFFICE = "updateOffice";
+    String FIND_BY_ID_OFFICE = "findByIdOffice";
+    String FIND_BY_PROPERTY_OFFICE = "findByPropertyOffice";
+    String FIND_ALL_OFFICE = "findAllOffice";
+    String GET_ALL_OFFICE = "getAllOffice";
+    
+    
+    String SAVE_DEPARTMENT = "saveDepartment";
+    String DELETE_DEPARTMENT = "deleteDepartment";
+    String UPDATE_DEPARTMENT = "updateDepartment";
+    String FIND_BY_ID_DEPARTMENT = "findByIdDepartment";
+    String FIND_BY_PROPERTY_DEPARTMENT = "findByPropertyDepartment";
+    String FIND_ALL_DEPARTMENT = "findAllDepartment";
+    String GET_ALL_DEPARTMENT = "getAllDepartment";
     
     
     String QUERY_STRING_SAVE_USERS_BY_ENTITY = "INSERT INTO UQAM.USERS(ID, OFFICEID, DEPARTMENTID, NAME, EMAIL) VALUES(?, ?, ?, ?, ?)";
@@ -289,7 +333,7 @@ public interface Constants extends Serializable {
 	String INVALID_DATA = "Missing properties in post data. Mandatory fields are: %s";
 	String INVALID_VALUE = "Invalid value for property: %s. Use one of the following: %s";
 	
-	String HIBERNATE_CONFIG_FILE = "com/gabon/info/hibernate.cfg.xml";
+	String IBATIS_CONFIG_FILE = "com/gabon/info/sql-map-config.xml";
 	String ORACLE_CONFIG_FILE = "com/gabon/info/oracle.properties";
 	
 	String DTO_CONTEXT_ROOT = "com/gabon/info/DTO.dto.xml";
@@ -316,17 +360,17 @@ public interface Constants extends Serializable {
 	String BEAN_PROJECTS_DAO_JPA_SPRING = "projectsDAOJpaSpring";
 	
 	
-	String BEAN_ABSTRACT_HIBERNATE_DAO_SUPPORT = "abstractHibernateDaoSupport";
-	String BEAN_CONCRETE_DAO_HIBERNATE_SPRING = "concreteDAOHibernateSpring";
-	String BEAN_SESSION_FACTORY = "sessionFactory";
-	String BEAN_HIBERNATE_TEMPLATE = "hibernateTemplate";
-	String BEAN_HIBERNATE_TRANSACTION_MANAGER = "hibernateTransactionManager";
+	String BEAN_ABSTRACT_IBATIS_DAO_SUPPORT = "abstractIbatisDaoSupport";
+	String BEAN_CONCRETE_DAO_IBATIS_SPRING = "concreteDAOIbatisSpring";
+	String BEAN_SESSION_FACTORY = "sqlSessionFactory";
+	String BEAN_IBATIS_TEMPLATE = "sqlMapClientTemplate";
+	String BEAN_IBATIS_TRANSACTION_MANAGER = "ibatisTransactionManager";
 	
-	String BEAN_DEPARTMENT_DAO_HIBERNATE_SPRING = "departmentDAOHibernateSpring";
-	String BEAN_USERS_DAO_HIBERNATE_SPRING = "usersDAOHibernateSpring";
-	String BEAN_OFFICE_DAO_HIBERNATE_SPRING = "officeDAOHibernateSpring";
-	String BEAN_ROLES_DAO_HIBERNATE_SPRING = "rolesDAOHibernateSpring";
-	String BEAN_PROJECTS_DAO_HIBERNATE_SPRING = "projectsDAOHibernateSpring";
+	String BEAN_DEPARTMENT_DAO_IBATIS_SPRING = "departmentDAOIbatisSpring";
+	String BEAN_USERS_DAO_IBATIS_SPRING = "usersDAOIbatisSpring";
+	String BEAN_OFFICE_DAO_IBATIS_SPRING = "officeDAOIbatisSpring";
+	String BEAN_ROLES_DAO_IBATIS_SPRING = "rolesDAOIbatisSpring";
+	String BEAN_PROJECTS_DAO_IBATIS_SPRING = "projectsDAOIbatisSpring";
 	
 	
 	String BEAN_ABSTRACT_JDBC_DAO_SUPPORT = "abstractJdbcDaoSupport";
@@ -350,13 +394,6 @@ public interface Constants extends Serializable {
 	
 	
 	String BEAN_BUILDER_FACTORY = "builderFactory";
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	String PERSISISTENCE                   = "entityManagerFactory";

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gabon.info.dao.spring.hibernate.roles.RolesDAO;
+import com.gabon.info.dao.spring.ibatis.roles.RolesDAO;
 import com.gabon.info.dto.roles.RolesDTOFacade;
 import com.gabon.info.model.roles.Roles;
 import com.gabon.info.service.AbstractService;

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gabon.info.dao.spring.hibernate.office.OfficeDAO;
+import com.gabon.info.dao.spring.ibatis.office.OfficeDAO;
 import com.gabon.info.dto.office.OfficeDTOFacade;
 import com.gabon.info.model.office.Office;
 import com.gabon.info.service.AbstractService;

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gabon.info.dao.spring.hibernate.users.UsersDAO;
+import com.gabon.info.dao.spring.ibatis.users.UsersDAO;
 import com.gabon.info.dto.users.UsersDTOFacade;
 import com.gabon.info.model.users.Users;
 import com.gabon.info.service.AbstractService;

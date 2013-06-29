@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gabon.info.dao.spring.hibernate.projects.ProjectsDAO;
+import com.gabon.info.dao.spring.ibatis.projects.ProjectsDAO;
 import com.gabon.info.dto.projects.ProjectsDTOFacade;
 import com.gabon.info.model.projects.Projects;
 import com.gabon.info.service.AbstractService;

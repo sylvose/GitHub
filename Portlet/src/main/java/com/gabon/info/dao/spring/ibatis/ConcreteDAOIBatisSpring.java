@@ -1,9 +1,14 @@
-package com.gabon.info.run;
+package com.gabon.info.dao.spring.ibatis;
+
+import static com.gabon.info.util.Constants.BEAN_CONCRETE_DAO_IBATIS_SPRING;
+
+import java.io.Serializable;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gabon.info.dao.AbstractDAOFactory;
 import com.gabon.info.dao.DAOFacade;
-import com.gabon.info.dao.ibatis.ConcreteDAOIBatis;
-import com.gabon.info.dao.spring.ibatis.ConcreteDAOIBatisSpring;
 import com.gabon.info.model.department.Department;
 import com.gabon.info.model.office.Office;
 import com.gabon.info.model.projects.Projects;
@@ -25,16 +30,16 @@ import com.gabon.info.model.users.Users;
  * A data access object (DAO) providing persistence and search support for User
  * entities. Transaction control of the save(), update() and delete() operations
  * must be handled externally by senders of these methods or must be manually
- * added to each of these methods for data to be persisted to the JPA datastore.
+ * added to each of these methods for data to be persisted to the Hibernate datastore.
  * 
  */
-public class ORM<T> implements AbstractDAOFactory<T> {	
+
+@Transactional
+@Repository(BEAN_CONCRETE_DAO_IBATIS_SPRING)
+public class ConcreteDAOIBatisSpring<E, PK extends Serializable> extends AbstractIBatisDaoSupport<E, PK> implements AbstractDAOFactory<E> {
 	
-	private static final long serialVersionUID = 1346557290296788523L;
-	
-	
-	private static AbstractDAOFactory<Object> daoFactory;
-	
+	private static final long serialVersionUID = 2810647357661718963L;
+
 	
 	private DAOFacade<Department> departmentDAOFacade;
 	
@@ -47,6 +52,12 @@ public class ORM<T> implements AbstractDAOFactory<T> {
 	private DAOFacade<Users> usersDAOFacade;
 	
 	
+	
+	public ConcreteDAOIBatisSpring() {
+		super(); 
+	}
+	
+
 	
 	public DAOFacade<Department> createDepartmentDAO() {
 		return departmentDAOFacade;
@@ -66,36 +77,5 @@ public class ORM<T> implements AbstractDAOFactory<T> {
 	
 	public DAOFacade<Users> createUsersDAO() {
 		return usersDAOFacade;
-	}
-	
-	
-	
-	
-	public static AbstractDAOFactory<Object> getAbstractDAOFactory(int frameWork) {
-		
-		switch (frameWork) {
-		
-				case CONCRETE_DAO_IBATIS:
-					daoFactory = new ConcreteDAOIBatis<Object>();
-					break;
-				case CONCRETE_DAO_IBATIS_SPRING:
-					daoFactory = new ConcreteDAOIBatisSpring<Object, Long>();
-					break;
-					
-				default: 
-					daoFactory = new ConcreteDAOIBatisSpring<Object, Long>();
-				break;
-		}
-		
-		return daoFactory;
-	}
-
-
-	public static AbstractDAOFactory<Object> getDaoFactory() {
-		return daoFactory;
-	}
-
-	public static void setDaoFactory(AbstractDAOFactory<Object> daoFactory) {
-		ORM.daoFactory = daoFactory;
 	}
 }

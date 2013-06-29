@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap departmentspace="Department">
+
+    <typeAlias alias="Map" type="java.util.Map" />
+	<typeAlias alias="Department" type="com.gabon.info.model.department.Department" />
+	
+	
+    <parameterMap id="parameterMap-save-Department" class="Map">
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="department"        javaType="java.lang.String"  jdbcType="VARCHAR" />
+	</parameterMap>
+    <insert id="saveDepartment" parameterMap="parameterMap-save-Department">
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT UQAM.DEPARTMENT_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO UQAM.DEPARTMENT (ID, DEPARTMENT) VALUES (?,?)
+	</insert>
+	
+    
+    <parameterMap id="parameterMap-delete-Department" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<delete id="deleteDepartment" parameterMap="parameterMap-delete-Department">
+		DELETE FROM UQAM.DEPARTMENT WHERE ID = ?
+	</delete>
+    
+    
+	<parameterMap id="parameterMap-update-Department" class="Map">
+		<parameter property="department"        javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+	</parameterMap>
+	<update id="updateDepartment" parameterMap="parameterMap-update-Department">
+		UPDATE UQAM.DEPARTMENT SET DEPARTMENT = ? WHERE ID = ?
+	</update>
+	
+	
+	<resultMap id="resultMap-findById-Department" class="Department">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="department"           column="DEPARTMENT"          columnIndex="2" />
+	</resultMap>
+	<parameterMap id="parameterMap-findById-Department" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<select id="findByIdDepartment" resultMap="resultMap-findById-Department" parameterMap="parameterMap-findById-Department">
+		<![CDATA[
+			SELECT ID, DEPARTMENT FROM UQAM.DEPARTMENT WHERE ID = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+	
+	<resultMap id="resultMap-findByProperty-Department" class="Department">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="department"           column="DEPARTMENT"          columnIndex="2" />
+	</resultMap>
+	<parameterMap id="parameterMap-findByProperty-Department" class="Map">
+		<parameter property="department"                javaType="java.lang.String" jdbcType="VARCHAR" />
+	</parameterMap>
+	<select id="findByPropertyDepartment" resultMap="resultMap-findByProperty-Department" parameterMap="parameterMap-findByProperty-Department">
+		<![CDATA[
+			SELECT ID, DEPARTMENT FROM UQAM.DEPARTMENT WHERE DEPARTMENT = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-findAll-Department" class="Department">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="department"           column="DEPARTMENT"          columnIndex="2" />
+	</resultMap>
+	<select id="findAllDepartment" resultMap="resultMap-findAll-Department">
+		<![CDATA[
+			SELECT ID, DEPARTMENT FROM UQAM.DEPARTMENT ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-getAll-Department" class="Department">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="department"           column="DEPARTMENT"          columnIndex="2" />
+	</resultMap>
+	<select id="getAllDepartment" resultMap="resultMap-getAll-Department">
+		<![CDATA[
+			SELECT ID, DEPARTMENT FROM UQAM.DEPARTMENT ORDER BY ID ASC
+		]]>
+	</select>
+</sqlMap>

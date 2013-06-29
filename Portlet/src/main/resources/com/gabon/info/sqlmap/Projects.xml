@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap projectspace="Projects">
+
+    <typeAlias alias="Map" type="java.util.Map" />
+	<typeAlias alias="Projects" type="com.gabon.info.model.projects.Projects" />
+	
+	
+    <parameterMap id="parameterMap-save-Projects" class="Map">
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="project"           javaType="java.lang.String"  jdbcType="VARCHAR" />
+	</parameterMap>
+    <insert id="saveProjects" parameterMap="parameterMap-save-Projects">
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT UQAM.PROJECTS_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO UQAM.PROJECTS (ID, PROJECT) VALUES (?,?)
+	</insert>
+	
+    
+    <parameterMap id="parameterMap-delete-Projects" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<delete id="deleteProjects" parameterMap="parameterMap-delete-Projects">
+		DELETE FROM UQAM.PROJECTS WHERE ID = ?
+	</delete>
+    
+    
+	<parameterMap id="parameterMap-update-Projects" class="Map">
+		<parameter property="project"            javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                 javaType="java.lang.Long"	  jdbcType="NUMERIC" />
+	</parameterMap>
+	<update id="updateProjects" parameterMap="parameterMap-update-Projects">
+		UPDATE UQAM.PROJECTS SET PROJECT = ? WHERE ID = ?
+	</update>
+	
+	
+	<resultMap id="resultMap-findById-Projects" class="Projects">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="project"              column="PROJECT"             columnIndex="2" />
+	</resultMap>
+	<parameterMap id="parameterMap-findById-Projects" class="Map">
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+	</parameterMap>
+	<select id="findByIdProjects" resultMap="resultMap-findById-Projects" parameterMap="parameterMap-findById-Projects">
+		<![CDATA[
+			SELECT ID, PROJECT FROM UQAM.PROJECTS WHERE ID = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+	
+	<resultMap id="resultMap-findByProperty-Projects" class="Projects">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="project"              column="PROJECT"            columnIndex="2" />
+	</resultMap>
+	<parameterMap id="parameterMap-findByProperty-Projects" class="Map">
+		<parameter property="project"           javaType="java.lang.String" jdbcType="VARCHAR" />
+	</parameterMap>
+	<select id="findByPropertyProjects" resultMap="resultMap-findByProperty-Projects" parameterMap="parameterMap-findByProperty-Projects">
+		<![CDATA[
+			SELECT ID, PROJECT FROM UQAM.PROJECTS WHERE PROJECTS = ? ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-findAll-Projects" class="Projects">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="project"              column="PROJECT"             columnIndex="2" />
+	</resultMap>
+	<select id="findAllProjects" resultMap="resultMap-findAll-Projects">
+		<![CDATA[
+			SELECT ID, PROJECT FROM UQAM.PROJECTS ORDER BY ID ASC
+		]]>
+	</select>
+
+
+	<resultMap id="resultMap-getAll-Projects" class="Projects">
+		<result property="id"                   column="ID"                  columnIndex="1" />
+    	<result property="project"              column="PROJECT"             columnIndex="2" />
+	</resultMap>
+	<select id="getAllProjects" resultMap="resultMap-getAll-Projects">
+		<![CDATA[
+			SELECT ID, PROJECT FROM UQAM.PROJECTS ORDER BY ID ASC
+		]]>
+	</select>
+</sqlMap>
