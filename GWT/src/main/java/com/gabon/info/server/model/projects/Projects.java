@@ -111,7 +111,7 @@ public final class Projects extends AbstractProjects implements ProjectsFacade {
 	public void assignProjectsToUsers(final Long projectsId, final Long usersId) {
 		if (projectsId != null && usersId != null) {
 			final ProjectsDAOFacade<Projects> projectsDAOFacade = ProjectsDAO.getInstance();
-			final Projects projects = projectsDAOFacade.findById(usersId);
+			final Projects projects = projectsDAOFacade.findById(projectsId);
 			
 			final UsersDAOFacade<Users> usersDAOFacade = UsersDAO.getInstance();
 			final Users users = usersDAOFacade.findById(usersId);
