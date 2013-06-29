@@ -13,7 +13,6 @@ import java.util.Set;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
@@ -25,7 +24,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.stereotype.Component;
 
-import com.gabon.info.dao.jpa.JpaHelper;
+import com.gabon.info.dao.spring.jpa.projects.ProjectsDAO;
+import com.gabon.info.dao.spring.jpa.projects.ProjectsDAOFacade;
+import com.gabon.info.dao.spring.jpa.users.UsersDAO;
+import com.gabon.info.dao.spring.jpa.users.UsersDAOFacade;
 import com.gabon.info.model.users.Users;
 
 /*
@@ -107,13 +109,17 @@ public final class Projects extends AbstractProjects implements ProjectsFacade {
 	@Transient
 	public void assignProjectsToUsers(final Long projectsId, final Long usersId) {
 		if (projectsId != null && usersId != null) {
-			final JpaHelper jpaHelper = new JpaHelper();
-			final EntityManager entityManager = jpaHelper.getEntityManager();
-			final Users users = entityManager.find(Users.class, usersId);
-			final Projects projects = entityManager.find(Projects.class, projectsId);
+			final ProjectsDAOFacade<Projects> projectsDAOFacade = ProjectsDAO.getInstance();
+			final Projects projects = projectsDAOFacade.findById(projectsId);
 			
-			users.getProjects().add(projects);
-			projects.getUsers().add(users);
+			final UsersDAOFacade<Users> usersDAOFacade = UsersDAO.getInstance();
+			final Users users = usersDAOFacade.findById(usersId);
+			
+			if (projects != null) 
+				projects.getUsers().add(users);
+			
+			if (users != null) 	
+				users.getProjects().add(projects);
 		}
 	}
 }
