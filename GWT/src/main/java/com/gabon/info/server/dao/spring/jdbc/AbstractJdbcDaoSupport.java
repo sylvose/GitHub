@@ -18,15 +18,15 @@ import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
-import org.apache.commons.dbutils.BasicRowProcessor;
-import org.apache.commons.dbutils.RowProcessor;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gabon.info.server.dao.DAOSupportFacade;
@@ -130,11 +130,6 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		this.values = values;
 	}
 
-	private void setValues(final PreparedStatement preparedStatement, final Object... values) throws SQLException {
-        for (int i = 0; i < values.length; i++)
-            preparedStatement.setObject(i + 1, values[i]);
-    }
-	
 	
 	
 	public void showMethods(E entity) {
@@ -260,29 +255,12 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		return exists;
 	}
     
-    private E mapperResultSetToGeneric(final ResultSet resultSet) {
-        
-		E entity = null;
-				
-		if (resultSet != null)  {
-			
-			try {
-				final RowProcessor rowProcessor = new BasicRowProcessor(); 
-				final Object object = rowProcessor.toBean(resultSet, this.clazzE);
-				
-				entity = this.clazzE.cast(object);
-				
-			} catch (SQLException e) {
-				logger.log(Level.SEVERE, e.getClass().getName() + MESSAGE + e.getMessage(), e);
-			}
-		}
-       
-        return entity;
-    }
-	
-	
-	
-	
+    
+    
+    
+    
+    @Modifying
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public void save(E entity) {
 		if (entity == null)
 			throw new IllegalArgumentException(ILLEGAL_ARGUMENT_SAVE + entity);
@@ -309,9 +287,7 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 			if (connection != null)
 				connection.setAutoCommit(false);
 			
-			final PreparedStatement preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-			setValues(preparedStatement, this.values);
-			final int affectedRows = preparedStatement.executeUpdate();
+			final int affectedRows = this.getJdbcTemplate().update(this.queryString, this.values);
 			if (affectedRows == 0)
 				throw new IllegalArgumentException(SAVING_E +entity+ INSTANCE_FAILED_NO_ROWS_AFFECTED);
 		
@@ -337,10 +313,14 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		}
 	}
 	
+    @Modifying
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void delete(E entity) {
 		delete(getId(entity));
 	}
-	
+
+    @Modifying
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void delete(PK id) {
 		if (id == null)
 			throw new IllegalArgumentException(ILLEGAL_ARGUMENT_DELETE + id);
@@ -363,8 +343,7 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 				connection.setAutoCommit(false);
 			
 			this.queryString = QUERY_STRING_DELETE_FROM_UQAM_TABLE + this.clazzE.getSimpleName().toUpperCase() + CLAUSE_STRING_WHERE_ID + id;
-			final PreparedStatement preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-			final int affectedRows = preparedStatement.executeUpdate();
+			final int affectedRows = this.getJdbcTemplate().update(this.queryString);
 			if (affectedRows == 0)
 				throw new IllegalArgumentException(DELETING_E +id+ INSTANCE_FAILED_NO_ROWS_AFFECTED);
 			
@@ -390,6 +369,8 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		}
 	}
 
+    @Modifying
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public E update(E entity) {
 		if (entity == null)
 			throw new IllegalArgumentException(ILLEGAL_ARGUMENT_UPDATE + entity);
@@ -418,9 +399,7 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 			if (connection != null)
 				connection.setAutoCommit(false);
 			
-			final PreparedStatement preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-			setValues(preparedStatement, this.values);
-			final int affectedRows = preparedStatement.executeUpdate();
+			final int affectedRows = this.getJdbcTemplate().update(this.queryString, this.values);
 			if (affectedRows == 0)
 				throw new IllegalArgumentException(UPDATING_E +entity+ INSTANCE_FAILED_NO_ROWS_AFFECTED);
 			
@@ -454,31 +433,19 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		return model;
 	}
 
+    @Modifying
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public E findById(PK id) {
 		if (id == null)
 			throw new IllegalArgumentException(ILLEGAL_ARGUMENT_FIND + id);
-		
-		Connection connection = this.getConnection();
 		
 		E entity = null;
 		
 		logger.log(Level.INFO, FINDING_E_BY_ID + id);
 		
 		try {
-			if (connection == null || connection.isClosed()) {
-				final DataSource dataSource = this.getJdbcTemplate().getDataSource();
-				connection = dataSource.getConnection();
-			}
-			
-			if (connection != null)
-				connection.setAutoCommit(false);
-			
 			this.queryString = QUERY_STRING_SELECT_STAR_FROM_UQAM_TABLE + this.clazzE.getSimpleName().toUpperCase() + CLAUSE_STRING_WHERE_ID + id;
-			final PreparedStatement preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			final ResultSet resultSet = preparedStatement.executeQuery();
-			
-			if (resultSet.next())
-				entity = mapperResultSetToGeneric(resultSet);
+			entity = this.getJdbcTemplate().queryForObject(this.queryString, this.clazzE);
 			
 			if (entity != null) {
 				
@@ -492,46 +459,27 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		} catch (RuntimeException e) {
 			logger.log(Level.SEVERE, FIND_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), e);
 			throw e;
-		} catch (SQLException sql) {
-			logger.log(Level.SEVERE, SAVE_FAILED + sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
-	    } catch (Exception e) {
+		} catch (Exception e) {
 			logger.log(Level.SEVERE, FIND_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), e);
-		} finally {
-			releaseConnection(connection);
 		}
 		
 		return entity;
 	}
 	
+    @Modifying
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public List<E> findByProperty(String propertyName, Object propertyValue, int... rowStartIdxAndCount) {
 		
 		if (StringUtils.isBlank(StringUtils.trim(propertyName)) || propertyValue == null || rowStartIdxAndCount.length < 0)
 			throw new IllegalArgumentException(ILLEGAL_ARGUMENT_FIND + propertyName + ", propertyValue: " + propertyValue + ", rowStartIdxAndCount: " + rowStartIdxAndCount);
 		
-		Connection connection = this.getConnection();
-		
 		logger.log(Level.INFO, FINDING_ALL_E_BY_PROPERTY_NAME + propertyName + ", propertyValue: " + propertyValue);
 		
-		List<E> entities = null;
+		List<E> entities = new LinkedList<E>();
 		
 		try {
-			if (connection == null || connection.isClosed()) {
-				final DataSource dataSource = this.getJdbcTemplate().getDataSource();
-				connection = dataSource.getConnection();
-			}
-			
-			if (connection != null)
-				connection.setAutoCommit(false);
-			
 			this.queryString = QUERY_STRING_SELECT_STAR_FROM_UQAM_TABLE + this.clazzE.getSimpleName().toUpperCase() + CLAUSE_STRING_WHERE + propertyName + " = " + "'" + propertyValue + "'";
-			final PreparedStatement preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			final ResultSet resultSet = preparedStatement.executeQuery();
-			
-			if (resultSet != null) {
-				entities = new LinkedList<E>();
-				while (resultSet.next())
-					entities.add(mapperResultSetToGeneric(resultSet));
-			 } 
+			entities = this.getJdbcTemplate().queryForList(this.queryString, this.clazzE);
 			
 			if (rowStartIdxAndCount != null && rowStartIdxAndCount.length > 0) {
 				final int rowStartIdx = Math.max(0, rowStartIdxAndCount[0]);
@@ -554,46 +502,27 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		 } catch (RuntimeException e) {
 			 logger.log(Level.SEVERE, FIND_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), e);
 			throw e;
-		 } catch (SQLException sql) {
-				logger.log(Level.SEVERE, SAVE_FAILED + sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
 		 } catch (Exception e) {
 			 logger.log(Level.SEVERE, FIND_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), e);
-		 } finally {
-			 releaseConnection(connection);
 		 }
 		
 		return entities;
 	}
-
+    
+    @Modifying
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public List<E> findAll(int... rowStartIdxAndCount) {
 		
 		if (rowStartIdxAndCount.length < 0)
 			throw new IllegalArgumentException(ILLEGAL_ARGUMENT_FIND + ", rowStartIdxAndCount: " + rowStartIdxAndCount);
 
-		Connection connection = this.getConnection();
-		
 		logger.log(Level.INFO, FINDING_ALL_E_BY_ROWSSTARTIDXANDCOUNT + rowStartIdxAndCount);
 		
-		List<E> entities = null;
+		List<E> entities = new LinkedList<E>();
 		
 		try {
-			if (connection == null || connection.isClosed()) {
-				final DataSource dataSource = this.getJdbcTemplate().getDataSource();
-				connection = dataSource.getConnection();
-			}
-			
-			if (connection != null)
-				connection.setAutoCommit(false);
-			
 			this.queryString = QUERY_STRING_SELECT_STAR_FROM_UQAM_TABLE + this.clazzE.getSimpleName().toUpperCase();
-			final PreparedStatement preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			final ResultSet resultSet = preparedStatement.executeQuery();
-			
-			if (resultSet != null) {
-				entities = new LinkedList<E>();
-				while (resultSet.next())
-					entities.add(mapperResultSetToGeneric(resultSet));
-			 } 
+			entities = this.getJdbcTemplate().queryForList(this.queryString, this.clazzE);
 			
 			if (rowStartIdxAndCount != null && rowStartIdxAndCount.length > 0) {
 				final int rowStartIdx = Math.max(0, rowStartIdxAndCount[0]);
@@ -616,42 +545,23 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		 } catch (RuntimeException e) {
 			logger.log(Level.SEVERE, FIND_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), e);
 			throw e;
-		 } catch (SQLException sql) {
-				logger.log(Level.SEVERE, SAVE_FAILED + sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
 		 } catch (Exception e) {
 			 logger.log(Level.SEVERE, FIND_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), e);
-		 } finally {
-			 releaseConnection(connection);
 		 }
 		
 		return entities;
 	}
 	
+    @Modifying
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public List<E> getAll() {
 		logger.log(Level.INFO, GETTING_ALL_E);
 
-		Connection connection = this.getConnection();
-		
-		List<E> entities = null;
+		List<E> entities = new LinkedList<E>();
 		
 		try {
-			if (connection == null || connection.isClosed()) {
-				final DataSource dataSource = this.getJdbcTemplate().getDataSource();
-				connection = dataSource.getConnection();
-			}
-			
-			if (connection != null)
-				connection.setAutoCommit(false);
-			
 			this.queryString = QUERY_STRING_SELECT_STAR_FROM_UQAM_TABLE + this.clazzE.getSimpleName().toUpperCase();
-			final PreparedStatement preparedStatement = connection.prepareStatement(this.queryString, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			final ResultSet resultSet = preparedStatement.executeQuery();
-			
-			if (resultSet != null) {
-				entities = new LinkedList<E>();
-				while (resultSet.next())
-					entities.add(mapperResultSetToGeneric(resultSet));
-			 }
+			entities = this.getJdbcTemplate().queryForList(this.queryString, this.clazzE);
 			
 			if (entities != null && !entities.isEmpty())
 				logger.log(Level.INFO, GET_SUCCESSFUL);
@@ -661,12 +571,8 @@ public abstract class AbstractJdbcDaoSupport<E, PK extends Serializable> extends
 		 } catch (RuntimeException e) {
 			 logger.log(Level.SEVERE, GET_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), e);
 			throw e;
-		 }  catch (SQLException sql) {
-				logger.log(Level.SEVERE, SAVE_FAILED + sql.getClass().getName() + MESSAGE + sql.getMessage(), sql);
-		 } catch (Exception e) {
+		 }  catch (Exception e) {
 			 logger.log(Level.SEVERE, GET_FAILED + e.getClass().getName() + MESSAGE + e.getMessage(), e);
-		 } finally {
-			 releaseConnection(connection);
 		 }
 	
 		return entities;
