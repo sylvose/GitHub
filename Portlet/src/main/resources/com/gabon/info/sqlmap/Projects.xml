@@ -9,8 +9,8 @@
 	
 	
     <parameterMap id="parameterMap-save-Projects" class="Map">
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="project"           javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="project"           javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
     <insert id="saveProjects" parameterMap="parameterMap-save-Projects">
 		<selectKey resultClass="long" keyProperty="id">
@@ -21,7 +21,7 @@
 	
     
     <parameterMap id="parameterMap-delete-Projects" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<delete id="deleteProjects" parameterMap="parameterMap-delete-Projects">
 		DELETE FROM UQAM.PROJECTS WHERE ID = ?
@@ -29,8 +29,8 @@
     
     
 	<parameterMap id="parameterMap-update-Projects" class="Map">
-		<parameter property="project"            javaType="java.lang.String"  jdbcType="VARCHAR" />
-		<parameter property="id"                 javaType="java.lang.Long"	  jdbcType="NUMERIC" />
+		<parameter property="project"            javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
+		<parameter property="id"                 javaType="java.lang.Long"	  jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<update id="updateProjects" parameterMap="parameterMap-update-Projects">
 		UPDATE UQAM.PROJECTS SET PROJECT = ? WHERE ID = ?
@@ -42,7 +42,7 @@
     	<result property="project"              column="PROJECT"             columnIndex="2" />
 	</resultMap>
 	<parameterMap id="parameterMap-findById-Projects" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<select id="findByIdProjects" resultMap="resultMap-findById-Projects" parameterMap="parameterMap-findById-Projects">
 		<![CDATA[
@@ -53,14 +53,14 @@
 	
 	<resultMap id="resultMap-findByProperty-Projects" class="Projects">
 		<result property="id"                   column="ID"                  columnIndex="1" />
-    	<result property="project"              column="PROJECT"            columnIndex="2" />
+    	<result property="project"              column="PROJECT"             columnIndex="2" />
 	</resultMap>
 	<parameterMap id="parameterMap-findByProperty-Projects" class="Map">
-		<parameter property="project"           javaType="java.lang.String" jdbcType="VARCHAR" />
+		<parameter property="project"           javaType="java.lang.String" jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
 	<select id="findByPropertyProjects" resultMap="resultMap-findByProperty-Projects" parameterMap="parameterMap-findByProperty-Projects">
 		<![CDATA[
-			SELECT ID, PROJECT FROM UQAM.PROJECTS WHERE PROJECTS = ? ORDER BY ID ASC
+			SELECT ID, PROJECT FROM UQAM.PROJECTS WHERE PROJECT = ? ORDER BY ID ASC
 		]]>
 	</select>
 

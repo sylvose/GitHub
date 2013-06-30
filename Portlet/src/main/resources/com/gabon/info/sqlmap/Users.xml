@@ -9,11 +9,11 @@
 	
 	
     <parameterMap id="parameterMap-save-Users" class="Map">
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="officeid"          javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="departmentid"      javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="name"              javaType="java.lang.String"  jdbcType="VARCHAR" />
-		<parameter property="email"             javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="officeid"          javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="departmentid"      javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="name"              javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
+		<parameter property="email"             javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
     <insert id="saveUsers" parameterMap="parameterMap-save-Users">
 		<selectKey resultClass="long" keyProperty="id">
@@ -24,7 +24,7 @@
 	
     
     <parameterMap id="parameterMap-delete-Users" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<delete id="deleteUsers" parameterMap="parameterMap-delete-Users">
 		DELETE FROM UQAM.USERS WHERE ID = ?
@@ -32,11 +32,11 @@
     
     
 	<parameterMap id="parameterMap-update-Users" class="Map">
-		<parameter property="officeid"          javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="departmentid"      javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="name"              javaType="java.lang.String"  jdbcType="VARCHAR" />
-		<parameter property="email"             javaType="java.lang.String"  jdbcType="VARCHAR" />
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="officeid"          javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="departmentid"      javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="name"              javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
+		<parameter property="email"             javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<update id="updateUsers" parameterMap="parameterMap-update-Users">
 		UPDATE UQAM.USERS SET OFFICEID = ?, DEPARTMENTID = ?, NAME = ?, EMAIL = ? WHERE ID = ?
@@ -51,11 +51,11 @@
     	<result property="email"                column="EMAIL"               columnIndex="5" />
 	</resultMap>
 	<parameterMap id="parameterMap-findById-Users" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<select id="findByIdUsers" resultMap="resultMap-findById-Users" parameterMap="parameterMap-findById-Users">
 		<![CDATA[
-			SELECT ID, OFFICEID, DEPARTMENTID, NAME, EMAIL FROM UQAM.USERS WHERE ID = ? ORDER BY ID ASC
+			SELECT * FROM UQAM.USERS WHERE ID = ? ORDER BY ID ASC
 		]]>
 	</select>
 
@@ -67,13 +67,18 @@
     	<result property="name"                 column="NAME"                columnIndex="4" />
     	<result property="email"                column="EMAIL"               columnIndex="5" />
 	</resultMap>
-	<parameterMap id="parameterMap-findByProperty-Users" class="Map">
-		<parameter property="name"                javaType="java.lang.String" jdbcType="VARCHAR" />
-		<parameter property="email"               javaType="java.lang.String" jdbcType="VARCHAR" />
-	</parameterMap>
-	<select id="findByPropertyUsers" resultMap="resultMap-findByProperty-Users" parameterMap="parameterMap-findByProperty-Users">
+	<select id="findByPropertyUsers" resultMap="resultMap-findByProperty-Users">
 		<![CDATA[
-			SELECT ID, OFFICEID, DEPARTMENTID, NAME, EMAIL FROM UQAM.USERS WHERE NAME = ? OR EMAIL = ? ORDER BY ID ASC
+			SELECT * FROM UQAM.USERS
+		    <dynamic prepend="WHERE">
+				<isNotNull prepend="AND" property="name"> 
+					NAME = #name#
+				</isNotNull>
+				<isNotNull prepend="OR" property="email"> 
+					EMAIL = #email# 
+				</isNotNull>
+			</dynamic>
+			ORDER BY ID ASC
 		]]>
 	</select>
 
@@ -87,7 +92,7 @@
 	</resultMap>
 	<select id="findAllUsers" resultMap="resultMap-findAll-Users">
 		<![CDATA[
-			SELECT ID, OFFICEID, DEPARTMENTID, NAME, EMAIL FROM UQAM.USERS ORDER BY ID ASC
+			SELECT * FROM UQAM.USERS ORDER BY ID ASC
 		]]>
 	</select>
 
@@ -101,7 +106,7 @@
 	</resultMap>
 	<select id="getAllUsers" resultMap="resultMap-getAll-Users">
 		<![CDATA[
-			SELECT ID, OFFICEID, DEPARTMENTID, NAME, EMAIL FROM UQAM.USERS ORDER BY ID ASC
+			SELECT * FROM UQAM.USERS ORDER BY ID ASC
 		]]>
 	</select>
 </sqlMap>

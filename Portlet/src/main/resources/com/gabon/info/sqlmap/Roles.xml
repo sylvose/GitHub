@@ -9,9 +9,9 @@
 	
 	
     <parameterMap id="parameterMap-save-Roles" class="Map">
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="usersid"           javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="role"              javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="usersid"           javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="role"              javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
     <insert id="saveRoles" parameterMap="parameterMap-save-Roles">
 		<selectKey resultClass="long" keyProperty="id">
@@ -22,7 +22,7 @@
 	
     
     <parameterMap id="parameterMap-delete-Roles" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<delete id="deleteRoles" parameterMap="parameterMap-delete-Roles">
 		DELETE FROM UQAM.ROLES WHERE ID = ?
@@ -30,9 +30,9 @@
     
     
 	<parameterMap id="parameterMap-update-Roles" class="Map">
-		<parameter property="usersid"           javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="role"              javaType="java.lang.String"  jdbcType="VARCHAR" />
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="usersid"           javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="role"              javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<update id="updateRoles" parameterMap="parameterMap-update-Roles">
 		UPDATE UQAM.ROLES SET USERSID = ?, ROLE = ? WHERE ID = ?
@@ -45,7 +45,7 @@
     	<result property="role"                 column="ROLE"                columnIndex="3" />
 	</resultMap>
 	<parameterMap id="parameterMap-findById-Roles" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<select id="findByIdRoles" resultMap="resultMap-findById-Roles" parameterMap="parameterMap-findById-Roles">
 		<![CDATA[
@@ -60,7 +60,7 @@
     	<result property="role"                 column="ROLE"                columnIndex="3" />
 	</resultMap>
 	<parameterMap id="parameterMap-findByProperty-Roles" class="Map">
-		<parameter property="role"                javaType="java.lang.String" jdbcType="VARCHAR" />
+		<parameter property="role"                javaType="java.lang.String" jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
 	<select id="findByPropertyRoles" resultMap="resultMap-findByProperty-Roles" parameterMap="parameterMap-findByProperty-Roles">
 		<![CDATA[

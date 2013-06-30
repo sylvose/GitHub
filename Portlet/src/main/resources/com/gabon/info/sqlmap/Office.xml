@@ -9,8 +9,8 @@
 	
 	
     <parameterMap id="parameterMap-save-Office" class="Map">
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="office"            javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="office"            javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
     <insert id="saveOffice" parameterMap="parameterMap-save-Office">
 		<selectKey resultClass="long" keyProperty="id">
@@ -21,7 +21,7 @@
 	
     
     <parameterMap id="parameterMap-delete-Office" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<delete id="deleteOffice" parameterMap="parameterMap-delete-Office">
 		DELETE FROM UQAM.OFFICE WHERE ID = ?
@@ -29,8 +29,8 @@
     
     
 	<parameterMap id="parameterMap-update-Office" class="Map">
-		<parameter property="office"            javaType="java.lang.String"  jdbcType="VARCHAR" />
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="office"            javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<update id="updateOffice" parameterMap="parameterMap-update-Office">
 		UPDATE UQAM.OFFICE SET OFFICE = ? WHERE ID = ?
@@ -42,7 +42,7 @@
     	<result property="office"           column="OFFICE"                  columnIndex="2" />
 	</resultMap>
 	<parameterMap id="parameterMap-findById-Office" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<select id="findByIdOffice" resultMap="resultMap-findById-Office" parameterMap="parameterMap-findById-Office">
 		<![CDATA[
@@ -56,7 +56,7 @@
     	<result property="office"               column="OFFICE"              columnIndex="2" />
 	</resultMap>
 	<parameterMap id="parameterMap-findByProperty-Office" class="Map">
-		<parameter property="office"                javaType="java.lang.String" jdbcType="VARCHAR" />
+		<parameter property="office"                javaType="java.lang.String" jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
 	<select id="findByPropertyOffice" resultMap="resultMap-findByProperty-Office" parameterMap="parameterMap-findByProperty-Office">
 		<![CDATA[

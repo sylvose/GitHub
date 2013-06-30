@@ -9,8 +9,8 @@
 	
 	
     <parameterMap id="parameterMap-save-Department" class="Map">
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
-		<parameter property="department"        javaType="java.lang.String"  jdbcType="VARCHAR" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
+		<parameter property="department"        javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
     <insert id="saveDepartment" parameterMap="parameterMap-save-Department">
 		<selectKey resultClass="long" keyProperty="id">
@@ -21,7 +21,7 @@
 	
     
     <parameterMap id="parameterMap-delete-Department" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<delete id="deleteDepartment" parameterMap="parameterMap-delete-Department">
 		DELETE FROM UQAM.DEPARTMENT WHERE ID = ?
@@ -29,8 +29,8 @@
     
     
 	<parameterMap id="parameterMap-update-Department" class="Map">
-		<parameter property="department"        javaType="java.lang.String"  jdbcType="VARCHAR" />
-		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC" />
+		<parameter property="department"        javaType="java.lang.String"  jdbcType="VARCHAR"     mode="IN" />
+		<parameter property="id"                javaType="java.lang.Long"	 jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<update id="updateDepartment" parameterMap="parameterMap-update-Department">
 		UPDATE UQAM.DEPARTMENT SET DEPARTMENT = ? WHERE ID = ?
@@ -42,7 +42,7 @@
     	<result property="department"           column="DEPARTMENT"          columnIndex="2" />
 	</resultMap>
 	<parameterMap id="parameterMap-findById-Department" class="Map">
-		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC" />
+		<parameter property="id"                javaType="java.lang.Long" jdbcType="NUMERIC"     mode="IN" />
 	</parameterMap>
 	<select id="findByIdDepartment" resultMap="resultMap-findById-Department" parameterMap="parameterMap-findById-Department">
 		<![CDATA[
@@ -56,7 +56,7 @@
     	<result property="department"           column="DEPARTMENT"          columnIndex="2" />
 	</resultMap>
 	<parameterMap id="parameterMap-findByProperty-Department" class="Map">
-		<parameter property="department"                javaType="java.lang.String" jdbcType="VARCHAR" />
+		<parameter property="department"                javaType="java.lang.String" jdbcType="VARCHAR"     mode="IN" />
 	</parameterMap>
 	<select id="findByPropertyDepartment" resultMap="resultMap-findByProperty-Department" parameterMap="parameterMap-findByProperty-Department">
 		<![CDATA[
