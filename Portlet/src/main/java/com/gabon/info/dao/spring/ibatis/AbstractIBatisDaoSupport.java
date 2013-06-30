@@ -44,7 +44,7 @@ import com.gabon.info.dao.DAOSupportFacade;
  *    
  * Confidentiel
  * 
- * This class has the DAO class extend SqlSessionDaoSupport and uses the SqlSessionTemplate , but Spring recommends the native iBatis style of coding.
+ * This class has the DAO class extend SqlMapClientDaoSupport and uses the SqlMapClientTemplate , but Spring recommends the native iBatis style of coding.
  * 
  */
 
