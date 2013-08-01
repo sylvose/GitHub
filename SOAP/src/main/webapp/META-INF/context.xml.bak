@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE component PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "context.dtd">
+
+<!-- The contents of this file will be loaded for each web application -->
+<Context debug="10" reloadable="true" path="/restful" docBase="D:/workspace/RestFul/Restful" allowLinking="true" override="true" reloadable="true">
+
+	<Loader loaderClass="org.springframework.instrument.classloading.tomcat.TomcatInstrumentableClassLoader" useSystemClassLoaderAsParent="false" />
+	<!--
+		Copy spring-tomcat-weaver-x.y.z.jar into $CATALINA_HOME/server/lib (where $CATALINA_HOME represents the root of the Tomcat installation).
+		Instruct Tomcat to use the custom ClassLoader (instead of the default one) by editing the web application context file:
+    -->
+	
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+	
+	<Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+		resourceName="UserDatabase" />
+ 
+	<Resource name="jdbc/uqamDb" auth="Container" type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="10000" username="uqam"
+		password="uqam" driverClassName="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@localhost:1521:uqam" />
+
+</Context>

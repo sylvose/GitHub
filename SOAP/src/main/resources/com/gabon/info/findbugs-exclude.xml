@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE FindBugs PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "findBugs.dtd">
+
+<FindBugsFilter>
+     <Match>
+       <Class />
+     </Match>
+</FindBugsFilter>

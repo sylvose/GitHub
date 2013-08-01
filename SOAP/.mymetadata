@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SOAP"
+  id="myeclipse.1375325756143"
+  context-root="/soap"
+  j2ee-spec="6.0"
+  archive="SOAP.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
