@@ -969,6 +969,11 @@
       <version>${jersey-version}</version>
     </dependency>
     <dependency>
+      <groupId>com.sun.jersey.contribs</groupId>
+      <artifactId>maven-wadl-plugin</artifactId>
+      <version>1.0.3.1</version>
+    </dependency>
+    <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-grizzly2</artifactId>
       <version>${jersey-version}</version>
@@ -1010,6 +1015,11 @@
 		<artifactId>spring-data-jpa</artifactId>
 		<version>1.0.0.RELEASE</version>
 	</dependency>
+	<dependency>
+        <groupId>com.sun.jersey.jersey-test-framework</groupId>
+        <artifactId>jersey-test-framework-http</artifactId>
+        <version>1.2</version>
+    </dependency>
      <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-entitymanager</artifactId>
@@ -1140,16 +1150,6 @@
 		<groupId>commons-logging</groupId>
 		<artifactId>commons-logging</artifactId>
 	</dependency>
-    <dependency>
-      <groupId>com.sun.jersey.contribs</groupId>
-      <artifactId>maven-wadl-plugin</artifactId>
-      <version>1.0.3.1</version>
-    </dependency>
-    <dependency>
-        <groupId>com.sun.jersey.jersey-test-framework</groupId>
-        <artifactId>jersey-test-framework-http</artifactId>
-        <version>1.2</version>
-    </dependency>
     <dependency>
 		<groupId>com.ibm.websphere.appserver</groupId>
 		<artifactId>runtime</artifactId>
