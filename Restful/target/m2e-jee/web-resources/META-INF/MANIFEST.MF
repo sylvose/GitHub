@@ -1,0 +1,127 @@
+Manifest-Version: 1.0
+Implementation-Title: restful
+Maven-Version: 3.0.5
+Implementation-Version: 1.0
+Specification-Vendor: restful
+Class-Path: com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar com
+ /sun/jersey/jersey-server/1.9-ea04/jersey-server-1.9-ea04.jar asm/asm
+ /3.1/asm-3.1.jar com/sun/jersey/jersey-core/1.9-ea04/jersey-core-1.9-
+ ea04.jar com/sun/jersey/jersey-client/1.9-ea04/jersey-client-1.9-ea04
+ .jar com/sun/jersey/jersey-json/1.9-ea04/jersey-json-1.9-ea04.jar org
+ /codehaus/jettison/jettison/1.1/jettison-1.1.jar stax/stax-api/1.0.1/
+ stax-api-1.0.1.jar com/sun/xml/bind/jaxb-impl/2.2.3-1/jaxb-impl-2.2.3
+ -1.jar javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar javax/xml/str
+ eam/stax-api/1.0-2/stax-api-1.0-2.jar javax/activation/activation/1.1
+ /activation-1.1.jar org/codehaus/jackson/jackson-core-asl/1.8.3/jacks
+ on-core-asl-1.8.3.jar org/codehaus/jackson/jackson-mapper-asl/1.8.3/j
+ ackson-mapper-asl-1.8.3.jar org/codehaus/jackson/jackson-jaxrs/1.8.3/
+ jackson-jaxrs-1.8.3.jar org/codehaus/jackson/jackson-xc/1.8.3/jackson
+ -xc-1.8.3.jar com/sun/jersey/contribs/jersey-multipart/1.9-ea04/jerse
+ y-multipart-1.9-ea04.jar org/jvnet/mimepull/1.6/mimepull-1.6.jar com/
+ sun/jersey/contribs/maven-wadl-plugin/1.0.3.1/maven-wadl-plugin-1.0.3
+ .1.jar org/apache/maven/apache-maven/2.0.9/apache-maven-2.0.9.jar org
+ /apache/maven/maven-core/2.0.9/maven-core-2.0.9.jar org/apache/maven/
+ maven-settings/2.0.9/maven-settings-2.0.9.jar org/apache/maven/wagon/
+ wagon-file/1.0-beta-2/wagon-file-1.0-beta-2.jar org/apache/maven/mave
+ n-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter
+ -2.0.9.jar org/apache/maven/wagon/wagon-webdav/1.0-beta-2/wagon-webda
+ v-1.0-beta-2.jar slide/slide-webdavlib/2.1/slide-webdavlib-2.1.jar co
+ mmons-httpclient/commons-httpclient/2.0.2/commons-httpclient-2.0.2.ja
+ r jdom/jdom/1.0/jdom-1.0.jar de/zeigermann/xml/xml-im-exporter/1.1/xm
+ l-im-exporter-1.1.jar org/apache/maven/wagon/wagon-http-lightweight/1
+ .0-beta-2/wagon-http-lightweight-1.0-beta-2.jar org/apache/maven/wago
+ n/wagon-http-shared/1.0-beta-2/wagon-http-shared-1.0-beta-2.jar jtidy
+ /jtidy/4aug2000r7-dev/jtidy-4aug2000r7-dev.jar org/apache/maven/repor
+ ting/maven-reporting-api/2.0.9/maven-reporting-api-2.0.9.jar org/apac
+ he/maven/doxia/doxia-sink-api/1.0-alpha-10/doxia-sink-api-1.0-alpha-1
+ 0.jar org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.jar or
+ g/apache/maven/maven-model/2.0.9/maven-model-2.0.9.jar org/apache/mav
+ en/wagon/wagon-provider-api/1.0-beta-2/wagon-provider-api-1.0-beta-2.
+ jar org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1
+ /plexus-container-default-1.0-alpha-9-stable-1.jar org/apache/maven/m
+ aven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.jar or
+ g/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-
+ 2.0.9.jar org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.ja
+ r org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-
+ 2.0.9.jar org/apache/maven/wagon/wagon-ssh-external/1.0-beta-2/wagon-
+ ssh-external-1.0-beta-2.jar org/apache/maven/wagon/wagon-ssh-common/1
+ .0-beta-2/wagon-ssh-common-1.0-beta-2.jar org/apache/maven/maven-plug
+ in-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.jar org/codehaus/pl
+ exus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.
+ 0-alpha-4.jar org/apache/maven/maven-artifact-manager/2.0.9/maven-art
+ ifact-manager-2.0.9.jar org/apache/maven/maven-monitor/2.0.9/maven-mo
+ nitor-2.0.9.jar org/apache/maven/wagon/wagon-ssh/1.0-beta-2/wagon-ssh
+ -1.0-beta-2.jar com/jcraft/jsch/0.1.27/jsch-0.1.27.jar classworlds/cl
+ assworlds/1.1/classworlds-1.1.jar org/apache/maven/maven-toolchain/2.
+ 0.9/maven-toolchain-2.0.9.jar org/apache/maven/maven-artifact/2.0.9/m
+ aven-artifact-2.0.9.jar org/codehaus/plexus/plexus-utils/1.5.1/plexus
+ -utils-1.5.1.jar org/apache/maven/maven-plugin-api/2.0/maven-plugin-a
+ pi-2.0.jar xerces/xercesImpl/2.6.1/xercesImpl-2.6.1.jar com/sun/jerse
+ y/jersey-grizzly2/1.9-ea04/jersey-grizzly2-1.9-ea04.jar org/glassfish
+ /grizzly/grizzly-http/2.1.1/grizzly-http-2.1.1.jar org/glassfish/griz
+ zly/grizzly-http-server/2.1.1/grizzly-http-server-2.1.1.jar org/glass
+ fish/grizzly/grizzly-rcm/2.1.1/grizzly-rcm-2.1.1.jar org/glassfish/gr
+ izzly/grizzly-http-servlet/2.1.1/grizzly-http-servlet-2.1.1.jar com/s
+ un/jersey/jersey-test-framework/jersey-test-framework-core/1.9-ea04/j
+ ersey-test-framework-core-1.9-ea04.jar org/glassfish/javax.servlet/3.
+ 0/javax.servlet-3.0.jar org/springframework/spring-context/3.2.0.RELE
+ ASE/spring-context-3.2.0.RELEASE.jar org/springframework/spring-core/
+ 3.2.0.RELEASE/spring-core-3.2.0.RELEASE.jar org/springframework/sprin
+ g-aop/3.2.0.RELEASE/spring-aop-3.2.0.RELEASE.jar aopalliance/aopallia
+ nce/1.0/aopalliance-1.0.jar org/springframework/spring-expression/3.2
+ .0.RELEASE/spring-expression-3.2.0.RELEASE.jar org/springframework/sp
+ ring-beans/3.2.0.RELEASE/spring-beans-3.2.0.RELEASE.jar org/springfra
+ mework/spring-web/2.5/spring-web-2.5.jar org/springframework/data/spr
+ ing-data-jpa/1.0.0.RELEASE/spring-data-jpa-1.0.0.RELEASE.jar org/spri
+ ngframework/data/spring-data-commons-core/1.1.0.RELEASE/spring-data-c
+ ommons-core-1.1.0.RELEASE.jar org/springframework/spring-tx/3.0.5.REL
+ EASE/spring-tx-3.0.5.RELEASE.jar org/springframework/spring-orm/3.0.5
+ .RELEASE/spring-orm-3.0.5.RELEASE.jar org/springframework/spring-jdbc
+ /3.0.5.RELEASE/spring-jdbc-3.0.5.RELEASE.jar org/slf4j/jcl-over-slf4j
+ /1.6.1/jcl-over-slf4j-1.6.1.jar org/aspectj/aspectjrt/1.6.8/aspectjrt
+ -1.6.8.jar com/sun/jersey/jersey-test-framework/jersey-test-framework
+ -http/1.2/jersey-test-framework-http-1.2.jar com/sun/net/httpserver/h
+ ttp/20070405/http-20070405.jar org/hibernate/hibernate-entitymanager/
+ 3.5.0-Final/hibernate-entitymanager-3.5.0-Final.jar org/hibernate/hib
+ ernate-core/3.5.0-Final/hibernate-core-3.5.0-Final.jar org/hibernate/
+ hibernate-annotations/3.5.0-Final/hibernate-annotations-3.5.0-Final.j
+ ar org/hibernate/hibernate-commons-annotations/3.2.0.Final/hibernate-
+ commons-annotations-3.2.0.Final.jar cglib/cglib/2.2/cglib-2.2.jar jav
+ assist/javassist/3.9.0.GA/javassist-3.9.0.GA.jar org/hibernate/javax/
+ persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1
+ .0.0.Final.jar org/dynadto/dynadto/1.0/dynadto-1.0.jar org/slf4j/slf4
+ j-api/1.6.2/slf4j-api-1.6.2.jar org/slf4j/slf4j-log4j12/1.6.2/slf4j-l
+ og4j12-1.6.2.jar javax/transaction/jta/1.1/jta-1.1.jar dom4j/dom4j/1.
+ 6.1/dom4j-1.6.1.jar xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar xom/
+ xom/1.0/xom-1.0.jar xerces/xmlParserAPIs/2.6.2/xmlParserAPIs-2.6.2.ja
+ r xalan/xalan/2.6.0/xalan-2.6.0.jar com/ibm/icu/icu4j/2.6.1/icu4j-2.6
+ .1.jar log4j/log4j/1.2.17/log4j-1.2.17.jar aspectj/aspectjweaver/1.5.
+ 0/aspectjweaver-1.5.0.jar net/sf/dozer/dozer/4.4/dozer-4.4.jar common
+ s-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar commo
+ ns-collections/commons-collections/3.1/commons-collections-3.1.jar pm
+ d/pmd/4.3/pmd-4.3.jar checkstyle/checkstyle/5.0/checkstyle-5.0.jar an
+ tlr/antlr/2.7.6/antlr-2.7.6.jar commons-beanutils/commons-beanutils-c
+ ore/1.7.0/commons-beanutils-core-1.7.0.jar commons-cli/commons-cli/1.
+ 0/commons-cli-1.0.jar commons-dbutils/commons-dbutils/1.5/commons-dbu
+ tils-1.5.jar javax/servlet/servlet-api/2.3/servlet-api-2.3.jar direct
+ ory-naming/naming-java/0.8/naming-java-0.8.jar directory-naming/namin
+ g-core/0.8/naming-core-0.8.jar com/google/collections/google-collecti
+ ons/0.9/google-collections-0.9.jar com/oracle/ojdbc6/11.2.0.3/ojdbc6-
+ 11.2.0.3.jar org/apache/servicemix/bundles/org.apache.servicemix.bund
+ les.restlet/1.1.10_1/org.apache.servicemix.bundles.restlet-1.1.10_1.j
+ ar commons-lang/commons-lang/2.6/commons-lang-2.6.jar commons-logging
+ /commons-logging/1.1.1/commons-logging-1.1.1.jar
+Built-By: Sylvose ALLOGO
+Built-OS: Windows Vista
+Created-By: Sylvose ALLOGO
+Build-Date: 
+url: http://github.com/sylvose/restful
+Implementation-Vendor: restful
+Implementation-Vendor-Id: com.gabon.info
+Build-Jdk: 1.6.0_13
+Specification-Title: restful
+Specification-Version: 1.0
+Implementation-Build: 
+SCM: 
+Archiver-Version: Plexus Archiver
+
